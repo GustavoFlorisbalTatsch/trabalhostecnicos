@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Viagem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+    let nome=prompt("Digite seu nome");
+let distancia= parseInt(prompt("Digite sua distancia média"));
+let velocidade=parseInt(prompt("Digite sua velocidade média"));
+let consumo=parseInt(prompt("Digite o consumo do carro"));
+let preco=parseInt(prompt("Digite o preço da gasolina"));
+
+let tempo = distancia / velocidade;
+let litros = distancia / consumo;
+let custo = litros * preco;
+
+alert("resultado"+tempo);
+alert("resultado"+litros);
+alert("resultado"+custo);
+
+</script>
+</body>
+</html>
