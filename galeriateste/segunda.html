@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Teste</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    display: flex; /* Para alinhar os itens lado a lado, se houver mais de um */
+    flex-wrap: wrap; /* Para quebrar para a próxima linha em telas menores */
+    gap: 20px; /* Espaçamento entre os itens */
+    padding: 20px;
+    justify-content: center; /* Centralizar os itens horizontalmente */
+}
+
+.item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    width: 300px; /* Largura fixa para exemplo, pode ser ajustada ou usar flex-basis */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.item h2 {
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.item img {
+    max-width: 100%; /* Garante que a imagem não ultrapasse a largura do container */
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease-in-out; /* Adiciona uma transição suave */
+}
+
+.item img:hover {
+    transform: scale(1.05); /* Pequeno efeito de zoom ao passar o mouse */
+}
+
+.item a {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.item a:hover {
+    background-color: #0056b3;
+}
+
+/* Media query para telas menores */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Empilha os itens em telas menores */
+        align-items: center; /* Centraliza os itens verticalmente */
+    }
+
+    .item {
+        width: 90%; /* Ocupa mais largura em telas menores */
+    }
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination .active a {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination .disabled a {
+    color: #999;
+    border-color: #ddd;
+    cursor: not-allowed;
+}
+
+.pagination .disabled a:hover {
+    background-color: transparent;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Galeria Teste</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="item">
+            <h2>Rolls-Royce Corniche </h2>
+                <img src="rollsroycecorniche.JPG" alt="Descrição do rollsroycecorniche">
+                <a href="Rolls-RoyceCorniche.html">Link para saber mais </a>
+            </div>
+
+            <div class="item">
+            <h2>BMW E9 3.0 CSL</h2>
+                <img src="BMWE93.0CSL.JPG" alt="Descrição do BMWE93.0CSL.">
+                <a href="BMWE93.0CSL.html">Link para saber mais </a>
+            </div>
+
+            <div class="item">
+                <h2>Jaguar XJ12 Series 1</h2>
+                    <img src="JaguarXJ12Series1.JPG" alt="Descrição do JaguarXJ12Series1">
+                    <a href="JaguarXJ12Series1.html">Link para saber mais </a>
+                </div>
+            
+                <div class="item">
+                    <h2>Aston Martin Lagonda</h2>
+                        <img src="AstonMartinLagonda.JPG" alt="Descrição do AstonMartinLagonda">
+                        <a href="AstonMartinLagonda.html">Link para saber mais </a>
+                    </div>
+
+                <div class="item">
+                        <h2>Ferrari Testarossa</h2>
+                        <img src="FerrariTestarossa.JPG" alt="Descrição do FerrariTestarossa">
+                        <a href="FerrariTestarossa.html">Link para saber mais </a>
+                    </div>
+
+                <div class="item">
+                        <h2>Porsche 959</h2>
+                            <img src="Porsche959.JPG" alt="Descrição do Porsche959">
+                            <a href="Porsche 959.html">Link para saber mais </a>
+                    </div>
+                    
+                <div class="item">
+                        <h2>Lamborghini Countach 5000 QV</h2>
+                            <img src="LamborghiniCountach5000QV.JPG" alt="Descrição do LamborghiniCountach5000QV">
+                            <a href="LamborghiniCountach5000QV.html">Link para saber mais </a>
+                        </div>
+
+                <div class="item">
+                        <h2>Mercedes-Benz 600 SEL (W140)</h2>
+                            <img src="Mercedes-Benz600SEL(W140).JPG" alt="Descrição do Mercedes-Benz600SEL(W140)">
+                            <a href="Mercedes-Benz600SEL(W140).html">Link para saber mais </a>
+                        </div>
+                        
+                <div class="item">
+                            <h2>BMW 850CSi</h2>
+                                <img src="BMW850CSi.JPG" alt="Descrição do BMW850CSi">
+                                <a href="BMW850CSi.html">Link para saber mais </a>
+                        </div>
+
+                <div class="item">
+                            <h2>Aston Martin DB7</h2>
+                                <img src="AstonMartinDB7.JPG" alt="Descrição do AstonMartinDB7">
+                                <a href="AstonMartinDB7.html">Link para saber mais </a>
+                        </div>
+                        
+                <div class="item">
+                            <h2>Bentley Azure</h2>
+                                <img src="BentleyAzure.JPG" alt="Descrição do BentleyAzure">
+                                <a href="BentleyAzure.html">Link para saber mais </a>
+                        </div>
+
+                <div class="item">
+                            <h2>Jaguar XJ220</h2>
+                                <img src="JaguarXJ220.JPG" alt="Descrição do JaguarXJ220">
+                                <a href="JaguarXJ220.html">Link para saber mais </a>
+                        </div>
+                        <nav aria-label="Paginação de itens">
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="Anterior">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="index.html">1</a></li>
+                                <li class="page-item active"><a class="page-link" href="segunda.html">2</a></li>
+                                <li class="page-item"><a class="page-link" href="terceira.html">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Próximo">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </main>
+            </body>
+            </html>     
+       

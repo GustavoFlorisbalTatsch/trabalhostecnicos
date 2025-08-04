@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Teste</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            /* Para alinhar os itens lado a lado, se houver mais de um */
+            flex-wrap: wrap;
+            /* Para quebrar para a próxima linha em telas menores */
+            gap: 20px;
+            /* Espaçamento entre os itens */
+            padding: 20px;
+            justify-content: center;
+            /* Centralizar os itens horizontalmente */
+        }
+
+        .item {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+            /* Largura fixa para exemplo, pode ser ajustada ou usar flex-basis */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .item h2 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .item img {
+            max-width: 100%;
+            /* Garante que a imagem não ultrapasse a largura do container */
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease-in-out;
+            /* Adiciona uma transição suave */
+        }
+
+        .item img:hover {
+            transform: scale(1.05);
+            /* Pequeno efeito de zoom ao passar o mouse */
+        }
+
+        .item a {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .item a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Media query para telas menores */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                /* Empilha os itens em telas menores */
+                align-items: center;
+                /* Centraliza os itens verticalmente */
+            }
+
+            .item {
+                width: 90%;
+                /* Ocupa mais largura em telas menores */
+            }
+        }
+
+        .main-content {
+    display: flex;
+    flex-direction: column; /* Para que o container e a paginação fiquem em coluna */
+    align-items: center; /* Centraliza os itens filhos (container e pagination) horizontalmente */
+}
+
+.pagination {
+    /* As propriedades que você já tem para o estilo da paginação */
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    /* justify-content: center; Você já tem isso, mantém! */
+    align-items: center;
+}
+
+/* O restante do seu CSS permanece o mesmo */
+        .pagination li {
+            margin: 0 5px;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            color: #333;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .pagination .active a {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .pagination .disabled a {
+            color: #999;
+            border-color: #ddd;
+            cursor: not-allowed;
+        }
+
+        .pagination .disabled a:hover {
+            background-color: transparent;
+        }
+
+        .container::after {
+    content: "";
+    width: 320px; /* Largura do .item + gap */
+    display: inline-block;
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Galeria Teste</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="item">
+                <h2>Rolls-Royce Silver Seraph</h2>
+                <img src="Rolls-RoyceSilverSeraph.JPG" alt="Descrição do Rolls-RoyceSilverSeraph">
+                <a href="Rolls-RoyceSilverSeraph.html">Link para saber mais </a>
+            </div>
+
+            <div class="item">
+                <h2>Bugatti EB110 </h2>
+                <img src="BugattiEB110.JPG" alt="Descrição do BugattiEB110">
+                <a href="BugattiEB110.html">Link para saber mais </a>
+            </div>
+
+            <div class="item">
+                <h2>Vector W8</h2>
+                <img src="VectorW8.JPG" alt="Descrição do VectorW8">
+                <a href="VectorW8.html">Link para saber mais </a>
+            </div>
+
+            <div class="item">
+                <h2>Cizeta-Moroder V16T</h2>
+                <img src="Cizeta-MoroderV16T.JPG" alt="Descrição do Cizeta-MoroderV16T">
+                <a href="Cizeta-MoroderV16T.html">Link para saber mais </a>
+            </div>
+
+            <div class="item">
+                <h2>Ferrari Testarossa</h2>
+                <img src="FerrariTestarossa.JPG" alt="Descrição do FerrariTestarossa">
+                <a href="FerrariTestarossa.html">Link para saber mais </a>
+            </div>
+
+            <div class="item">
+                <h2>Lancia Thema 8.32</h2>
+                <img src="Lancia Thema 8.32.JPG" alt="Descrição do Lancia Thema 8.32.">
+                <a href="Lancia Thema 8.32.html">Link para saber mais </a>
+            </div>
+
+            <div class="item">
+                <h2>Bristol Blenheim</h2>
+                <img src="Bristol Blenheim.JPG" alt="Descrição do Bristol Blenheim">
+                <a href="Bristol Blenheim.html">Link para saber mais </a>
+            </div>
+
+            <div class="item">
+                <h2>De Tomaso Longchamp</h2>
+                <img src="De Tomaso Longchamp.JPG" alt="Descrição do De Tomaso Longchamp">
+                <a href="Tomaso Longchamp.html">Link para saber mais </a>
+            </div>
+
+            <div class="item">
+                <h2>Iso Grifo</h2>
+                <img src="Iso Grifo.JPG" alt="Descrição do Iso Grifo">
+                <a href="Iso Grifo.html">Link para saber mais </a>
+            </div>
+
+            <nav aria-label="Paginação de itens">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Anterior">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="index.html">1</a></li>
+                    <li class="page-item"><a class="page-link" href="segunda.html">2</a></li>
+                    <li class="page-item active"><a class="page-link" href="terceira.html">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Anterior">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </main>
+</body>
+
+</html>
