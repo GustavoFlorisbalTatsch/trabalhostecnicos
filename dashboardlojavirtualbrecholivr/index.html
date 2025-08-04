@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoStore - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">EcoStore</div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#dashboard"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="#produtos"><i class="fas fa-box-open"></i> Produtos</a></li>
+                    <li><a href="#pedidos"><i class="fas fa-clipboard-list"></i> Pedidos</a></li>
+                    <li><a href="#clientes"><i class="fas fa-users"></i> Clientes</a></li>
+                    <li><a href="#analises"><i class="fas fa-chart-pie"></i> Análises</a></li>
+                    <li><a href="#site-builder"><i class="fas fa-screwdriver-wrench"></i> Construtor de Sites</a></li>
+                    <li><a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">A</div>
+                    <div class="user-details">
+                        <span class="user-name">Admin</span>
+                        <span class="user-email">admin@ecostore.com</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1 id="page-title">Dashboard</h1>
+                    <p id="page-subtitle">Bem-vindo ao painel da sua loja online</p>
+                </div>
+                <div class="topbar-actions">
+                    <button class="btn-new-item"><i class="fas fa-plus"></i> Novo Produto</button>
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-bell"></i>
+                </div>
+            </header>
+
+            <section id="dashboard" class="dashboard-section active-section">
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper blue"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Vendas Totais</span>
+                            <div class="kpi-value">R$ 124.500</div>
+                            <div class="kpi-trend positive">+12% vs mês anterior</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper green"><i class="fas fa-box"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Pedidos</span>
+                            <div class="kpi-value">1,234</div>
+                            <div class="kpi-trend positive">+8% vs mês anterior</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper purple"><i class="fas fa-users"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Clientes</span>
+                            <div class="kpi-value">856</div>
+                            <div class="kpi-trend positive">+15% vs mês anterior</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper red"><i class="fas fa-tag"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Produtos</span>
+                            <div class="kpi-value">47</div>
+                            <div class="kpi-trend negative">-2% vs mês anterior</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-grid">
+                    <div class="chart-card large">
+                        <h3>Vendas dos Últimos 7 Meses</h3>
+                        <div class="chart-placeholder line-chart">
+                            <svg viewBox="0 0 600 300" preserveAspectRatio="none">
+                                <polyline fill="none" stroke="#5d5bfa" stroke-width="3" points="50,220 150,150 250,190 350,120 450,170 550,100"/>
+                            </svg>
+                            <div class="x-axis-labels">
+                                <span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span><span>Jul</span>
+                            </div>
+                            <div class="y-axis-labels">
+                                <span>8000</span><span>6000</span><span>4000</span><span>2000</span><span>0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-card small product-sales">
+                        <h3>Produtos Mais Vendidos</h3>
+                        <div class="product-list">
+                            <div class="product-item">
+                                <span class="product-name">iPhone 14 Pro</span>
+                                <span class="product-details">142 vendas</span>
+                                <span class="product-value">R$ 1.278.838 <span class="trend positive">▲ +8%</span></span>
+                            </div>
+                            <div class="product-item">
+                                <span class="product-name">MacBook Air M2</span>
+                                <span class="product-details">96 vendas</span>
+                                <span class="product-value">R$ 1.234.802 <span class="trend negative">▼ -2%</span></span>
+                            </div>
+                            <div class="product-item">
+                                <span class="product-name">AirPods Pro</span>
+                                <span class="product-details">158 vendas</span>
+                                <span class="product-value">R$ 436.544 <span class="trend positive">▲ +15%</span></span>
+                            </div>
+                            <div class="product-item">
+                                <span class="product-name">iPad Air</span>
+                                <span class="product-details">67 vendas</span>
+                                <span class="product-value">R$ 414.913 <span class="trend positive">▲ +9%</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-tables">
+                    <div class="table-card">
+                        <h3>Produtos Recentes</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PRODUTO</th>
+                                    <th>PREÇO</th>
+                                    <th>ESTOQUE</th>
+                                    <th>STATUS</th>
+                                    <th>AÇÕES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>iPhone 14 Pro</td>
+                                    <td>R$ 5.999,00</td>
+                                    <td>25</td>
+                                    <td><span class="status active">Ativo</span></td>
+                                    <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>MacBook Air M2</td>
+                                    <td>R$ 12.499,00</td>
+                                    <td>12</td>
+                                    <td><span class="status active">Ativo</span></td>
+                                    <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>AirPods Pro</td>
+                                    <td>R$ 2.799,00</td>
+                                    <td>0</td>
+                                    <td><span class="status sold-out">Esgotado</span></td>
+                                    <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>iPad Air</td>
+                                    <td>R$ 4.999,00</td>
+                                    <td>8</td>
+                                    <td><span class="status active">Ativo</span></td>
+                                    <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Apple Watch Series 9</td>
+                                    <td>R$ 4.299,00</td>
+                                    <td>15</td>
+                                    <td><span class="status active">Ativo</span></td>
+                                    <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-card">
+                        <h3>Pedidos Recentes</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PEDIDO</th>
+                                    <th>CLIENTE</th>
+                                    <th>TOTAL</th>
+                                    <th>STATUS</th>
+                                    <th>DATA</th>
+                                    <th>AÇÕES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#02345</td>
+                                    <td>João Silva</td>
+                                    <td>R$ 2.799,00</td>
+                                    <td><span class="status pending">Pendente</span></td>
+                                    <td>14/01/2024</td>
+                                    <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>#02346</td>
+                                    <td>Maria Santos</td>
+                                    <td>R$ 5.999,00</td>
+                                    <td><span class="status processing">Processando</span></td>
+                                    <td>14/01/2024</td>
+                                    <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>#02347</td>
+                                    <td>Pedro Costa</td>
+                                    <td>R$ 12.499,00</td>
+                                    <td><span class="status sent">Enviado</span></td>
+                                    <td>13/01/2024</td>
+                                    <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>#02348</td>
+                                    <td>Ana Oliveira</td>
+                                    <td>R$ 4.999,00</td>
+                                    <td><span class="status delivered">Entregue</span></td>
+                                    <td>13/01/2024</td>
+                                    <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>#02349</td>
+                                    <td>Carlos Lima</td>
+                                    <td>R$ 4.299,00</td>
+                                    <td><span class="status pending">Pendente</span></td>
+                                    <td>12/01/2024</td>
+                                    <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="produtos" class="dashboard-section">
+                <div class="search-filter-bar">
+                    <div class="search-input-group">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar produtos...">
+                    </div>
+                    <button class="btn-filter"><i class="fas fa-filter"></i> Filtros</button>
+                </div>
+
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper blue"><i class="fas fa-boxes"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Total de Produtos</span>
+                            <div class="kpi-value">47</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper green"><i class="fas fa-check-circle"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Em Estoque</span>
+                            <div class="kpi-value">42</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper red"><i class="fas fa-times-circle"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Sem Estoque</span>
+                            <div class="kpi-value">5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <h3>Produtos Recentes</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PRODUTO</th>
+                                <th>PREÇO</th>
+                                <th>ESTOQUE</th>
+                                <th>STATUS</th>
+                                <th>AÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>iPhone 14 Pro</td>
+                                <td>R$ 5.999,00</td>
+                                <td>25</td>
+                                <td><span class="status active">Ativo</span></td>
+                                <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>MacBook Air M2</td>
+                                <td>R$ 12.499,00</td>
+                                <td>12</td>
+                                <td><span class="status active">Ativo</span></td>
+                                <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>AirPods Pro</td>
+                                <td>R$ 2.799,00</td>
+                                <td>0</td>
+                                <td><span class="status sold-out">Esgotado</span></td>
+                                <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>iPad Air</td>
+                                <td>R$ 4.999,00</td>
+                                <td>8</td>
+                                <td><span class="status active">Ativo</span></td>
+                                <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Apple Watch Series 9</td>
+                                <td>R$ 4.299,00</td>
+                                <td>15</td>
+                                <td><span class="status active">Ativo</span></td>
+                                <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="pedidos" class="dashboard-section">
+                <div class="search-filter-bar">
+                    <div class="search-input-group">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar pedidos...">
+                    </div>
+                    <button class="btn-filter"><i class="fas fa-filter"></i> Filtros</button>
+                </div>
+
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper blue"><i class="fas fa-boxes"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Total de Pedidos</span>
+                            <div class="kpi-value">1,234</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper yellow"><i class="fas fa-hourglass-half"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Pendentes</span>
+                            <div class="kpi-value">23</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper green"><i class="fas fa-check-circle"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Concluídos</span>
+                            <div class="kpi-value">1,189</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper red"><i class="fas fa-times-circle"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Cancelados</span>
+                            <div class="kpi-value">22</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <h3>Pedidos Recentes</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PEDIDO</th>
+                                <th>CLIENTE</th>
+                                <th>TOTAL</th>
+                                <th>STATUS</th>
+                                <th>DATA</th>
+                                <th>AÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#02345</td>
+                                <td>João Silva</td>
+                                <td>R$ 2.799,00</td>
+                                <td><span class="status pending">Pendente</span></td>
+                                <td>14/01/2024</td>
+                                <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>#02346</td>
+                                <td>Maria Santos</td>
+                                <td>R$ 5.999,00</td>
+                                <td><span class="status processing">Processando</span></td>
+                                <td>14/01/2024</td>
+                                <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>#02347</td>
+                                <td>Pedro Costa</td>
+                                <td>R$ 12.499,00</td>
+                                <td><span class="status sent">Enviado</span></td>
+                                <td>13/01/2024</td>
+                                <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>#02348</td>
+                                <td>Ana Oliveira</td>
+                                <td>R$ 4.999,00</td>
+                                <td><span class="status delivered">Entregue</span></td>
+                                <td>13/01/2024</td>
+                                <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>#02349</td>
+                                <td>Carlos Lima</td>
+                                <td>R$ 4.299,00</td>
+                                <td><span class="status pending">Pendente</span></td>
+                                <td>12/01/2024</td>
+                                <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="clientes" class="dashboard-section">
+                <div class="search-filter-bar">
+                    <div class="search-input-group">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar clientes...">
+                    </div>
+                    <button class="btn-filter"><i class="fas fa-filter"></i> Filtros</button>
+                </div>
+
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper blue"><i class="fas fa-users"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Total de Clientes</span>
+                            <div class="kpi-value">856</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper green"><i class="fas fa-user-check"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Clientes Ativos</span>
+                            <div class="kpi-value">742</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper purple"><i class="fas fa-user-plus"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Novos Clientes Este Mês</span>
+                            <div class="kpi-value">48</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <h3>Lista de Clientes</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>CLIENTE</th>
+                                <th>PEDIDOS</th>
+                                <th>TOTAL GASTO</th>
+                                <th>ÚLTIMO PEDIDO</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="client-cell"><div class="user-avatar-small">JS</div>João Silva <br> <span class="client-email">js.joao.s@email.com</span></div></td>
+                                <td>12</td>
+                                <td>R$ 2.450,00</td>
+                                <td>2 dias atrás</td>
+                                <td><span class="status active">ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td><div class="client-cell"><div class="user-avatar-small">MS</div>Maria Santos <br> <span class="client-email">ms.maria.santos@email.com</span></div></td>
+                                <td>8</td>
+                                <td>R$ 1.890,00</td>
+                                <td>1 semana atrás</td>
+                                <td><span class="status active">ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td><div class="client-cell"><div class="user-avatar-small">PC</div>Pedro Costa <br> <span class="client-email">pc.pedro.costa@email.com</span></div></td>
+                                <td>15</td>
+                                <td>R$ 3.250,00</td>
+                                <td>3 dias atrás</td>
+                                <td><span class="status active">ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td><div class="client-cell"><div class="user-avatar-small">AO</div>Ana Oliveira <br> <span class="client-email">ao.ana.oliveira@email.com</span></div></td>
+                                <td>5</td>
+                                <td>R$ 890,00</td>
+                                <td>2 semanas atrás</td>
+                                <td><span class="status inactive">inativo</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="analises" class="dashboard-section">
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper blue"><i class="fas fa-percent"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Taxa de Conversão</span>
+                            <div class="kpi-value">3.2%</div>
+                            <div class="kpi-trend positive">+6% vs mês anterior</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper purple"><i class="fas fa-eye"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Visualizações</span>
+                            <div class="kpi-value">24.5K</div>
+                            <div class="kpi-trend negative">-12% vs mês anterior</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper green"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Ticket Médio</span>
+                            <div class="kpi-value">R$ 285</div>
+                            <div class="kpi-trend positive">+5% vs mês anterior</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper light-purple"><i class="fas fa-chart-line"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">ROI</span>
+                            <div class="kpi-value">245%</div>
+                            <div class="kpi-trend positive">+25% vs mês anterior</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-grid">
+                    <div class="chart-card large">
+                        <h3>Vendas dos Últimos 7 Meses</h3>
+                        <div class="chart-placeholder line-chart">
+                            <svg viewBox="0 0 600 300" preserveAspectRatio="none">
+                                <polyline fill="none" stroke="#5d5bfa" stroke-width="3" points="50,220 150,150 250,190 350,120 450,170 550,100"/>
+                            </svg>
+                            <div class="x-axis-labels">
+                                <span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span><span>Jul</span>
+                            </div>
+                            <div class="y-axis-labels">
+                                <span>8000</span><span>6000</span><span>4000</span><span>2000</span><span>0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-card small">
+                        <h3>Vendas por Categoria</h3>
+                        <div class="chart-placeholder bar-chart horizontal-bars">
+                            <div class="bar-item">
+                                <span class="bar-label">Eletrônicos</span>
+                                <div class="bar blue" style="height: 100%;"></div>
+                            </div>
+                            <div class="bar-item">
+                                <span class="bar-label">Roupas</span>
+                                <div class="bar blue" style="height: 75%;"></div>
+                            </div>
+                            <div class="bar-item">
+                                <span class="bar-label">Casa & Jardim</span>
+                                <div class="bar blue" style="height: 50%;"></div>
+                            </div>
+                            <div class="bar-item">
+                                <span class="bar-label">Livros</span>
+                                <div class="bar blue" style="height: 35%;"></div>
+                            </div>
+                            <div class="bar-item">
+                                <span class="bar-label">Esportes</span>
+                                <div class="bar blue" style="height: 25%;"></div>
+                            </div>
+                            <div class="y-axis-labels-right">
+                                <span>4000</span><span>3000</span><span>2000</span><span>1000</span><span>0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-analytics-grid">
+                    <div class="table-card">
+                        <h3>Fonte de Tráfego</h3>
+                        <div class="chart-placeholder pie-chart">
+                            <div class="pie-slice" style="--p:45;--c:#605cff;">Orgânico 45%</div>
+                            <div class="pie-slice" style="--p:21;--c:#2ecc71;">Redes Sociais 21%</div>
+                            <div class="pie-slice" style="--p:19;--c:#f1c40f;">E-mail 19%</div>
+                            <div class="pie-slice" style="--p:15;--c:#e74c3c;">Direto 15%</div>
+                        </div>
+                    </div>
+                    <div class="table-card metrics-performance">
+                        <h3>Métricas de Performance</h3>
+                        <div class="metric-item">
+                            <span>Taxa de Abandono</span>
+                            <p>Carrinho de compras</p>
+                            <span class="metric-value">68.5% <span class="trend negative">-2.1%</span></span>
+                        </div>
+                        <div class="metric-item">
+                            <span>Tempo na Página</span>
+                            <p>Média de sessão</p>
+                            <span class="metric-value">2min 34s <span class="trend positive">+12s</span></span>
+                        </div>
+                        <div class="metric-item">
+                            <span>Taxa de Retorno</span>
+                            <p>Clientes recorrentes</p>
+                            <span class="metric-value">34.2% <span class="trend positive">+5.6%</span></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="site-builder" class="dashboard-section">
+                <div class="site-builder-header">
+                    <h2>Meu Site</h2>
+                    <div class="site-builder-actions">
+                        <i class="fas fa-eye"></i> Visualizar
+                        <i class="fas fa-cog"></i> Configurações
+                        <button class="btn-builder-action primary"><i class="fas fa-save"></i> Salvar</button>
+                        <button class="btn-builder-action success"><i class="fas fa-upload"></i> Publicar</button>
+                    </div>
+                </div>
+
+                <div class="site-builder-content">
+                    <div class="builder-sidebar">
+                        <h3>Ferramentas</h3>
+                        <div class="builder-menu-group">
+                            <h4><i class="fas fa-magic"></i> Geração com IA</h4>
+                            <ul>
+                                <li><i class="fas fa-robot"></i> Gerar Site com IA</li>
+                                <li><i class="fas fa-copy"></i> Templates <i class="fas fa-angle-right"></i></li>
+                            </ul>
+                        </div>
+                        <div class="builder-menu-group">
+                            <h4><i class="fas fa-shapes"></i> Elementos Básicos</h4>
+                            <ul>
+                                <li><i class="fas fa-font"></i> Texto <span>Adicionar texto editável</span></li>
+                                <li><i class="fas fa-image"></i> Imagem <span>Adicionar imagem</span></li>
+                                <li><i class="fas fa-hand-pointer"></i> Botão <span>Adicionar botão clicável</span></li>
+                            </ul>
+                        </div>
+                        <div class="builder-menu-group">
+                            <h4><i class="fas fa-grip"></i> Layout & Estrutura</h4>
+                            <ul>
+                                <li><i class="fas fa-heading"></i> Cabeçalho <span>Cabeçalho do site</span></li>
+                                <li><i class="fas fa-grip-lines"></i> Seção <span>Seção de conteúdo</span></li>
+                                <li><i class="fas fa-square"></i> Container <span>Container flexível</span></li>
+                                <li><i class="fas fa-vector-square"></i> Rodapé <span>Rodapé do site</span></li>
+                            </ul>
+                        </div>
+                        <div class="builder-tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <p>Dica: Use a IA para gerar um site completo ou aplique um template pronto. Você também pode adicionar elementos manualmente.</p>
+                        </div>
+                    </div>
+                    <div class="builder-canvas">
+                        <div class="canvas-placeholder">
+                            <i class="fas fa-plus"></i>
+                            <p>Comece a construir seu site</p>
+                            <p>Use a IA para gerar um site completo ou aplique um template pronto. Você também pode adicionar elementos manualmente. </p>
+                            <div class="canvas-actions">
+                                <button><i class="fas fa-magic"></i> Geração IA</button>
+                                <button><i class="fas fa-copy"></i> Templates prontos</button>
+                                <button><i class="fas fa-edit"></i> Editor visual</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="builder-properties">
+                        <div class="properties-placeholder">
+                            <i class="fas fa-palette"></i>
+                            <p>Selecione um elemento no canvas para editar suas propriedades e estilos.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="configuracoes" class="dashboard-section">
+                <h2>Configurações</h2>
+                <div class="config-grid">
+                    <div class="config-card large">
+                        <h3>Informações da Loja</h3>
+                        <div class="form-group">
+                            <label for="shop-name">Nome da Loja</label>
+                            <input type="text" id="shop-name" value="EcoStore">
+                        </div>
+                        <div class="form-group">
+                            <label for="shop-description">Descrição</label>
+                            <textarea id="shop-description">Loja online especializada em produtos sustentáveis</textarea>
+                            <i class="fas fa-edit edit-icon"></i>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email de Contato</label>
+                            <input type="email" id="contact-email" value="contato@ecostore.com">
+                        </div>
+                    </div>
+
+                    <div class="config-card small">
+                        <h3>Pagamentos</h3>
+                        <div class="payment-option">
+                            <span>Cartão de Crédito</span>
+                            <p>Visa, Mastercard, Elo</p>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="payment-option">
+                            <span>PIX</span>
+                            <p>Pagamento instantâneo</p>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="payment-option">
+                            <span>Boleto Bancário</span>
+                            <p>2-3 dias úteis</p>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="config-card small">
+                        <h3>Notificações</h3>
+                        <div class="notification-option">
+                            <span>Novos Pedidos</span>
+                            <p>Receba notificações de novos pedidos</p>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="notification-option">
+                            <span>Estoque Baixo</span>
+                            <p>Alertas quando estoque estiver baixo</p>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="notification-option">
+                            <span>Relatórios</span>
+                            <p>Relatórios semanais de vendas</p>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="config-card small">
+                        <h3>Segurança</h3>
+                        <div class="security-option">
+                            <span>Alterar Senha</span>
+                            <p>Última alteração há 3 meses</p>
+                            <button class="btn-link">Alterar</button>
+                        </div>
+                        <div class="security-option">
+                            <span>Autenticação em 2 Fatores</span>
+                            <p>Segurança adicional para sua conta</p>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="config-card small">
+                        <h3>Entrega</h3>
+                        <div class="delivery-option">
+                            <span>Frete Grátis</span>
+                            <p>Acima de R$ 300</p>
+                        </div>
+                        <div class="delivery-option">
+                            <span>Entrega Expressa</span>
+                            <p>Até 24h</p>
+                        </div>
+                    </div>
+
+                    <div class="config-card small">
+                        <h3>Localização</h3>
+                        <div class="location-info">
+                            <span>Idioma</span>
+                            <p>Português (BR)</p>
+                        </div>
+                        <div class="location-info">
+                            <span>Moeda</span>
+                            <p>Real (BRL)</p>
+                        </div>
+                    </div>
+
+                    <div class="config-card small">
+                        <h3>Equipe</h3>
+                        <div class="team-info">
+                            <span>Usuários</span>
+                            <p>3 administradores</p>
+                            <button class="btn-link">Gerenciar equipe</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions bottom-save">
+                    <button class="btn-primary">Salvar Configurações</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarLinks = document.querySelectorAll('.sidebar-nav ul li a');
+            const sections = document.querySelectorAll('.dashboard-section');
+            const pageTitle = document.getElementById('page-title');
+            const pageSubtitle = document.getElementById('page-subtitle');
+            const topbarNewItemButton = document.querySelector('.btn-new-item');
+
+            const sectionTitles = {
+                'dashboard': { title: 'Dashboard', subtitle: 'Bem-vindo ao painel da sua loja online', buttonText: 'Novo Produto', buttonIcon: 'fas fa-plus' },
+                'produtos': { title: 'Produtos', subtitle: 'Gerencie seu catálogo de produtos', buttonText: 'Adicionar Produto', buttonIcon: 'fas fa-plus' },
+                'pedidos': { title: 'Pedidos', subtitle: 'Gerencie todos os pedidos de sua loja', buttonText: 'Novo Pedido', buttonIcon: 'fas fa-plus' },
+                'clientes': { title: 'Clientes', subtitle: 'Gerencie sua base de clientes', buttonText: 'Adicionar Cliente', buttonIcon: 'fas fa-user-plus' },
+                'analises': { title: 'Análises', subtitle: 'Insights detalhados sobre sua loja', buttonText: 'Gerar Relatório', buttonIcon: 'fas fa-file-export' },
+                'site-builder': { title: 'Meu Site', subtitle: 'Construtor de Sites', buttonText: 'Publicar Alterações', buttonIcon: 'fas fa-upload' },
+                'configuracoes': { title: 'Configurações', subtitle: 'Gerencie as configurações da sua loja', buttonText: 'Salvar Configurações', buttonIcon: 'fas fa-save' }
+            };
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Remove active from all sidebar links
+                    sidebarLinks.forEach(item => item.parentElement.classList.remove('active'));
+                    // Add active to the clicked link's parent li
+                    this.parentElement.classList.add('active');
+
+                    // Hide all sections
+                    sections.forEach(section => section.classList.remove('active-section'));
+
+                    // Show the target section
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.classList.add('active-section');
+                    }
+
+                    // Update topbar title and subtitle
+                    if (sectionTitles[targetId]) {
+                        pageTitle.textContent = sectionTitles[targetId].title;
+                        pageSubtitle.textContent = sectionTitles[targetId].subtitle;
+                        topbarNewItemButton.innerHTML = `<i class="${sectionTitles[targetId].buttonIcon}"></i> ${sectionTitles[targetId].buttonText}`;
+                        // Hide button if no text is provided for a section (e.g., config)
+                        if (!sectionTitles[targetId].buttonText) {
+                             topbarNewItemButton.style.display = 'none';
+                        } else {
+                             topbarNewItemButton.style.display = 'flex'; // Or 'block' depending on button style
+                        }
+                    }
+                });
+            });
+
+            // Initial active section (Dashboard)
+            document.querySelector('.sidebar-nav ul li.active a').click();
+        });
+    </script>
+</body>
+</html>
