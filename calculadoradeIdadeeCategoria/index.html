@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Idade</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Idade</h1>
+        <form id="calculadoraForm">
+            <div class="input-group">
+                <label for="anoNascimento">Ano de Nascimento:</label>
+                <input type="number" id="anoNascimento" name="anoNascimento" min="1900" max="2025" required>
+            </div>
+            <div class="input-group">
+                <label for="anoAtual">Ano Atual:</label>
+                <input type="number" id="anoAtual" name="anoAtual" min="1900" max="2025" value="2025" required>
+            </div>
+            <button type="button" id="calcularIdadeBtn" onclick="verificarIdade()">Calcular Idade</button>
+        </form>
+        <div id="resultado">
+            <p>Sua idade é: <span id="idadeResultado"></span></p>
+            <p>Categoria: <span id="categoriaResultado"></span></p> 
+        </div>
+    </div>
+
+    <script>
+        function verificarIdade() {
+            let anoNascimentoInput = document.getElementById('anoNascimento');
+            let anoAtualInput = document.getElementById('anoAtual');
+            let idadeResultadoSpan = document.getElementById('idadeResultado');
+            let categoriaResultadoSpan = document.getElementById('categoriaResultado'); // Novo span para a categoria
+            let resultadoDiv = document.getElementById('resultado');
+
+            let anoNascimento = parseInt(anoNascimentoInput.value); // Obter o valor como número
+            let anoAtual = parseInt(anoAtualInput.value); // Obter o valor como número
+
+            // Verifica se os valores são números válidos e se os campos não estão vazios
+            if (!isNaN(anoNascimento) && !isNaN(anoAtual) && anoNascimentoInput.value !== '' && anoAtualInput.value !== '') {
+                let idade = anoAtual - anoNascimento;
+                let categoria = "";
+
+                if (idade < 12) {
+                    categoria = "Criança";
+                } else if (idade >= 12 && idade <= 17) {
+                    categoria = "Adolescente";
+                } else if (idade >= 18 && idade <= 59) {
+                    categoria = "Adulto";
+                } else {
+                    categoria = "Idoso";
+                }
+
+                idadeResultadoSpan.textContent = idade + " anos";
+                categoriaResultadoSpan.textContent = categoria; // Exibe a categoria
+                resultadoDiv.style.display = 'block'; // Mostra a div de resultado
+            } else {
+                // Mensagem de erro se os campos não forem preenchidos ou não forem números
+                idadeResultadoSpan.textContent = "Por favor, preencha os anos de nascimento e atual corretamente.";
+                categoriaResultadoSpan.textContent = ""; // Limpa a categoria
+                resultadoDiv.style.display = 'block'; // Mostra a div de resultado para exibir a mensagem de erro
+            }
+        }
+    </script>
+</body>
+</html>
