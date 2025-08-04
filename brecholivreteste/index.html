@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Loja Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Brecho Livre</a>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="lojavirtual.html">Loja Virtual</a></li>
+                    <li><a href="afiliado.html">Afiliado</a></li>
+                    <li><a href="categorias.html">Categorias</a></li>
+                    <li><a href="promocoes.html">Promoções</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Pesquisar produtos...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            <div class="user-actions">
+                <a href="login.html"><i class="fas fa-user"></i></a>
+                <a href="carrinho.html"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+            <button class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+        <section class="popular-categories">
+            <h2>Categorias Populares</h2>
+            <div class="category-grid">
+                <a href="categorias.html#roupas" class="category-card">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Roupas</h3>
+                </a>
+                <a href="categorias.html#calcados" class="category-card">
+                    <i class="fas fa-shoe-prints"></i>
+                    <h3>Calçados</h3>
+                </a>
+                <a href="categorias.html#eletronicos" class="category-card">
+                    <i class="fas fa-laptop"></i>
+                    <h3>Eletrônicos</h3>
+                </a>
+                <a href="categorias.html#acessorios" class="category-card">
+                    <i class="fas fa-gem"></i>
+                    <h3>Acessórios</h3>
+                </a>
+            </div>
+        </section>
+
+    </main>
+    
+    <section class="featured-products">
+    <h2>Produtos em Destaque</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <a href="/produto/nome-do-produto-1" class="product-link">
+                <div class="product-image-wrapper">
+                    <img src="https://via.placeholder.com/300x250/F5F5F5/333333?text=Produto+1" alt="Nome do Produto 1">
+                    <span class="badge new">Novo!</span> </div>
+                <h3>Nome do Produto 1</h3>
+                <p class="description">Descrição breve e interessante do Produto 1. Fale sobre suas características.</p>
+                <div class="product-price-info">
+                    <p class="price">R$ 199,90</p>
+                </div>
+            </a>
+            <button class="add-to-cart">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="product-card">
+            <a href="/produto/nome-do-produto-2" class="product-link">
+                <div class="product-image-wrapper">
+                    <img src="https://via.placeholder.com/300x250/E0E0E0/333333?text=Produto+2" alt="Nome do Produto 2">
+                    <span class="badge sale">-20%</span> </div>
+                <h3>Nome do Produto 2</h3>
+                <p class="description">Descrição breve e interessante do Produto 2. Fale sobre suas características.</p>
+                <div class="product-price-info">
+                    <p class="old-price">R$ 312,49</p>
+                    <p class="price">R$ 249,99</p>
+                </div>
+            </a>
+            <button class="add-to-cart">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="product-card">
+            <a href="/produto/nome-do-produto-3" class="product-link">
+                <div class="product-image-wrapper">
+                    <img src="https://via.placeholder.com/300x250/D0D0D0/333333?text=Produto+3" alt="Nome do Produto 3">
+                </div>
+                <h3>Nome do Produto 3</h3>
+                <p class="description">Descrição breve e interessante do Produto 3. Fale sobre suas características.</p>
+                <div class="product-price-info">
+                    <p class="price">R$ 129,50</p>
+                </div>
+            </a>
+            <button class="add-to-cart">Adicionar ao Carrinho</button>
+        </div>
+
+        <div class="product-card">
+            <a href="/produto/nome-do-produto-4" class="product-link">
+                <div class="product-image-wrapper">
+                    <img src="https://via.placeholder.com/300x250/C0C0C0/333333?text=Produto+4" alt="Nome do Produto 4">
+                </div>
+                <h3>Nome do Produto 4</h3>
+                <p class="description">Descrição breve e interessante do Produto 4. Fale sobre suas características.</p>
+                <div class="product-price-info">
+                    <p class="price">R$ 350,00</p>
+                </div>
+            </a>
+            <button class="add-to-cart">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+</section>
+
+      <footer>
+    <div class="footer-content">
+      <div>
+        <h3>Brechó Livre</h3>
+        <p>Compra e venda de produtos usados. Promovendo sustentabilidade e economia circular.</p>
+      </div>
+      <div>
+        <h3>Contato</h3>
+        <p><i class="fas fa-envelope"></i> brecholivre@gmail.com</p>
+        <p><i class="fas fa-phone"></i> (11) 98765-4321</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Brechó Livre. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+    <script>
+        document.querySelector('.hamburger-menu').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+            document.querySelector('.search-bar').classList.toggle('active');
+            document.querySelector('.user-actions').classList.toggle('active');
+        });
+    </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
