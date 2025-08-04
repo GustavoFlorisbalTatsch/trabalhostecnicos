@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AfiliadoPro - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-angle-left"></i>
+                <div class="logo">AfiliadoPro</div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#dashboard"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="#vendas"><i class="fas fa-dollar-sign"></i> Vendas</a></li>
+                    <li><a href="#comissoes"><i class="fas fa-coins"></i> Comissões</a></li>
+                    <li><a href="#links"><i class="fas fa-link"></i> Links</a></li>
+                    <li><a href="#relatorios"><i class="fas fa-file-alt"></i> Relatórios</a></li>
+                    <li><a href="#referencias"><i class="fas fa-users"></i> Referências</a></li>
+                    <li><a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar...">
+                </div>
+                <div class="topbar-actions">
+                    <i class="fas fa-bell"></i>
+                    <div class="user-profile">
+                        <span class="user-initials">AF</span>
+                    </div>
+                </div>
+            </header>
+
+            <section id="dashboard" class="dashboard-section active-section">
+                <h2>Dashboard Afiliado</h2>
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Receita Total</span>
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="kpi-value">R$ 28.450,00</div>
+                        <div class="kpi-trend positive">+12.5% em relação ao mês passado</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Comissões</span>
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="kpi-value">R$ 5.690,00</div>
+                        <div class="kpi-trend positive">+15.2% em relação ao mês passado</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Conversões</span>
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="kpi-value">147</div>
+                        <div class="kpi-trend negative">-9.5% em relação ao mês passado</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Visitantes Únicos</span>
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="kpi-value">2.847</div>
+                        <div class="kpi-trend negative">-2.1% em relação ao mês passado</div>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <div class="chart-card">
+                        <h3>Receita e Comissões</h3>
+                        <div class="chart-placeholder line-chart">
+                            <svg viewBox="0 0 600 300" preserveAspectRatio="none">
+                                <polyline fill="none" stroke="#605cff" stroke-width="3" points="50,250 150,180 250,220 350,150 450,100 550,120"/>
+                                <polyline fill="none" stroke="#2ecc71" stroke-width="3" points="50,260 150,240 250,250 350,245 450,230 550,235"/>
+                            </svg>
+                            <div class="x-axis-labels">
+                                <span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span>
+                            </div>
+                            <div class="y-axis-labels">
+                                <span>6000</span><span>4500</span><span>3000</span><span>1500</span><span>0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Conversões por Fonte</h3>
+                        <div class="chart-placeholder bar-chart">
+                            <div class="bar google" style="height: 80%;"><span>Google</span></div>
+                            <div class="bar facebook" style="height: 65%;"><span>Facebook</span></div>
+                            <div class="bar instagram" style="height: 50%;"><span>Instagram</span></div>
+                            <div class="bar linkedin" style="height: 40%;"><span>LinkedIn</span></div>
+                            <div class="bar youtube" style="height: 30%;"><span>YouTube</span></div>
+                        </div>
+                        <div class="y-axis-labels-right">
+                            <span>100</span><span>75</span><span>50</span><span>25</span><span>0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-transactions">
+                    <h3>Transações Recentes</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Produto</th>
+                                <th>Valor</th>
+                                <th>Comissão</th>
+                                <th>Status</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Maria Santos</td>
+                                <td>Curso de Marketing Digital</td>
+                                <td>R$ 450,00</td>
+                                <td class="comission-value">R$ 74,55</td>
+                                <td><span class="status paid">Pago</span></td>
+                                <td>14/01/2024</td>
+                            </tr>
+                            <tr>
+                                <td>João Oliveira</td>
+                                <td>E-book de Vendas</td>
+                                <td>R$ 97,00</td>
+                                <td class="comission-value">R$ 19,40</td>
+                                <td><span class="status pending">Pendente</span></td>
+                                <td>13/01/2024</td>
+                            </tr>
+                            <tr>
+                                <td>Ana Costa</td>
+                                <td>Mentoria Individual</td>
+                                <td>R$ 1.995,00</td>
+                                <td class="comission-value">R$ 399,40</td>
+                                <td><span class="status paid">Pago</span></td>
+                                <td>12/01/2024</td>
+                            </tr>
+                            <tr>
+                                <td>Pedro Silva</td>
+                                <td>Workshop Online</td>
+                                <td>R$ 297,00</td>
+                                <td class="comission-value">R$ 44,55</td>
+                                <td><span class="status cancelled">Cancelado</span></td>
+                                <td>11/01/2024</td>
+                            </tr>
+                            <tr>
+                                <td>Carla Mendes</td>
+                                <td>Curso Avançado</td>
+                                <td>R$ 697,00</td>
+                                <td class="comission-value">R$ 104,55</td>
+                                <td><span class="status paid">Pago</span></td>
+                                <td>10/01/2024</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="vendas" class="dashboard-section">
+                <h2>Vendas</h2>
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Vendas Hoje</span>
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="kpi-value">R$ 1.891,00</div>
+                        <div class="kpi-trend negative">-20.5% vs ontem</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Vendas Este Mês</span>
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="kpi-value">R$ 28.450,00</div>
+                        <div class="kpi-trend positive">+12.5% vs mês anterior</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Produtos Vendidos</span>
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="kpi-value">147</div>
+                        <div class="kpi-trend negative">-9.5% vs mês anterior</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Novos Clientes</span>
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="kpi-value">89</div>
+                        <div class="kpi-trend negative">-19.7% vs mês anterior</div>
+                    </div>
+                </div>
+
+                <div class="recent-sales">
+                    <h3>Vendas Recentes</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Data</th>
+                                <th>Valor</th>
+                                <th>Comissão</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Curso de Marketing Digital</td>
+                                <td>2024-06-15</td>
+                                <td>R$ 450,00</td>
+                                <td class="comission-value">R$ 148,10</td>
+                                <td><span class="status confirmed">Confirmada</span></td>
+                            </tr>
+                            <tr>
+                                <td>E-book de Vendas</td>
+                                <td>2024-06-14</td>
+                                <td>R$ 97,00</td>
+                                <td class="comission-value">R$ 29,10</td>
+                                <td><span class="status pending">Pendente</span></td>
+                            </tr>
+                            <tr>
+                                <td>Mentoria 1:1</td>
+                                <td>2024-06-13</td>
+                                <td>R$ 1.200,00</td>
+                                <td class="comission-value">R$ 360,00</td>
+                                <td><span class="status confirmed">Confirmada</span></td>
+                            </tr>
+                            <tr>
+                                <td>Workshop Online</td>
+                                <td>2024-06-12</td>
+                                <td>R$ 297,00</td>
+                                <td class="comission-value">R$ 89,10</td>
+                                <td><span class="status confirmed">Confirmada</span></td>
+                            </tr>
+                            <tr>
+                                <td>Pack de Templates</td>
+                                <td>2024-06-11</td>
+                                <td>R$ 67,00</td>
+                                <td class="comission-value">R$ 20,10</td>
+                                <td><span class="status cancelled">Cancelada</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="comissoes" class="dashboard-section">
+                <h2>Comissões</h2>
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Comissões a Receber</span>
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="kpi-value">R$ 2.890,00</div>
+                        <div class="kpi-trend positive">+15.2% vs mês anterior</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Comissões Pagas</span>
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="kpi-value">R$ 5.690,00</div>
+                        <div class="kpi-trend positive">+15.2% vs mês passado</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Taxa Média</span>
+                            <i class="fas fa-percent"></i>
+                        </div>
+                        <div class="kpi-value">30%</div>
+                        <div class="kpi-trend neutral">Variável</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Próximo Pagamento</span>
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="kpi-value">15 dias</div>
+                        <div class="kpi-trend neutral">Data: 30/06</div>
+                    </div>
+                </div>
+
+                <div class="commission-history">
+                    <h3>Histórico de Comissões</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Data</th>
+                                <th>Valor da Venda</th>
+                                <th>Taxa</th>
+                                <th>Comissão</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Curso de Marketing Digital</td>
+                                <td>2024-06-15</td>
+                                <td>R$ 450,00</td>
+                                <td>30%</td>
+                                <td class="comission-value">R$ 148,10</td>
+                                <td><span class="status paid">Pago</span></td>
+                            </tr>
+                            <tr>
+                                <td>E-book de Vendas</td>
+                                <td>2024-06-14</td>
+                                <td>R$ 97,00</td>
+                                <td>30%</td>
+                                <td class="comission-value">R$ 29,10</td>
+                                <td><span class="status pending">Pendente</span></td>
+                            </tr>
+                            <tr>
+                                <td>Mentoria 1:1</td>
+                                <td>2024-06-13</td>
+                                <td>R$ 1.200,00</td>
+                                <td>30%</td>
+                                <td class="comission-value">R$ 360,00</td>
+                                <td><span class="status paid">Pago</span></td>
+                            </tr>
+                            <tr>
+                                <td>Workshop Online</td>
+                                <td>2024-06-12</td>
+                                <td>R$ 297,00</td>
+                                <td>30%</td>
+                                <td class="comission-value">R$ 89,10</td>
+                                <td><span class="status paid">Pago</span></td>
+                            </tr>
+                            <tr>
+                                <td>Pack de Templates</td>
+                                <td>2024-06-11</td>
+                                <td>R$ 67,00</td>
+                                <td>30%</td>
+                                <td class="comission-value">R$ 20,10</td>
+                                <td><span class="status awaiting">Aguardando</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="links" class="dashboard-section">
+                <h2>Links de Afiliado</h2>
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Total de Links</span>
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <div class="kpi-value">24</div>
+                        <div class="kpi-trend positive">+1 este mês</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Cliques Totais</span>
+                            <i class="fas fa-mouse-pointer"></i>
+                        </div>
+                        <div class="kpi-value">2.847</div>
+                        <div class="kpi-trend positive">+12.5% vs mês anterior</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Conversões</span>
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="kpi-value">147</div>
+                        <div class="kpi-trend negative">-9.5% vs mês anterior</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Taxa de Conversão</span>
+                            <i class="fas fa-percent"></i>
+                        </div>
+                        <div class="kpi-value">6.2%</div>
+                        <div class="kpi-trend negative">-2.1% vs mês anterior</div>
+                    </div>
+                </div>
+
+                <div class="my-affiliate-links">
+                    <div class="section-header-with-button">
+                        <h3>Seus Links de Afiliado</h3>
+                        <button class="btn-primary-small"><i class="fas fa-plus"></i> Novo Link</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Link</th>
+                                <th>Cliques</th>
+                                <th>Conversões</th>
+                                <th>Taxa de Conversão</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Curso de Marketing Digital</td>
+                                <td><a href="#" target="_blank">bit.ly/mkt digital 123</a><i class="fas fa-copy copy-icon"></i></td>
+                                <td>245</td>
+                                <td>18</td>
+                                <td>7.3%</td>
+                                <td><button class="btn-action">Editar</button><button class="btn-action">Estatísticas</button></td>
+                            </tr>
+                            <tr>
+                                <td>E-book de Vendas</td>
+                                <td><a href="#" target="_blank">bit.ly/ebook vendas 456</a><i class="fas fa-copy copy-icon"></i></td>
+                                <td>189</td>
+                                <td>12</td>
+                                <td>6.3%</td>
+                                <td><button class="btn-action">Editar</button><button class="btn-action">Estatísticas</button></td>
+                            </tr>
+                            <tr>
+                                <td>Mentoria 1:1</td>
+                                <td><a href="#" target="_blank">bit.ly/mentoria 789</a><i class="fas fa-copy copy-icon"></i></td>
+                                <td>156</td>
+                                <td>8</td>
+                                <td>5.1%</td>
+                                <td><button class="btn-action">Editar</button><button class="btn-action">Estatísticas</button></td>
+                            </tr>
+                            <tr>
+                                <td>Workshop Online</td>
+                                <td><a href="#" target="_blank">bit.ly/workshop 101</a><i class="fas fa-copy copy-icon"></i></td>
+                                <td>203</td>
+                                <td>15</td>
+                                <td>7.4%</td>
+                                <td><button class="btn-action">Editar</button><button class="btn-action">Estatísticas</button></td>
+                            </tr>
+                            <tr>
+                                <td>Pack de Templates</td>
+                                <td><a href="#" target="_blank">bit.ly/templates 345</a><i class="fas fa-copy copy-icon"></i></td>
+                                <td>134</td>
+                                <td>9</td>
+                                <td>6.7%</td>
+                                <td><button class="btn-action">Editar</button><button class="btn-action">Estatísticas</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="relatorios" class="dashboard-section">
+                <h2>Relatórios</h2>
+                <div class="report-options">
+                    <button class="btn-secondary-small"><i class="fas fa-calendar-alt"></i> Período</button>
+                    <button class="btn-secondary-small active"><i class="fas fa-filter"></i> Filtros</button>
+                    <button class="btn-secondary-small"><i class="fas fa-download"></i> Exportar</button>
+                </div>
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Resumo Executivo - Últimos 30 dias</span>
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="kpi-value">R$ 28.450,00</div>
+                        <div class="kpi-trend positive">+12.5% em relação ao período</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Conversões</span>
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="kpi-value">147</div>
+                        <div class="kpi-trend negative">-9.5% em relação ao período</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Taxa de Conversão</span>
+                            <i class="fas fa-percent"></i>
+                        </div>
+                        <div class="kpi-value">6.2%</div>
+                        <div class="kpi-trend negative">-2.1% em relação ao período</div>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <div class="chart-card">
+                        <h3>Receita e Comissões</h3>
+                        <div class="chart-placeholder line-chart">
+                            <svg viewBox="0 0 600 300" preserveAspectRatio="none">
+                                <polyline fill="none" stroke="#605cff" stroke-width="3" points="50,250 150,180 250,220 350,150 450,100 550,120"/>
+                                <polyline fill="none" stroke="#2ecc71" stroke-width="3" points="50,260 150,240 250,250 350,245 450,230 550,235"/>
+                            </svg>
+                            <div class="x-axis-labels">
+                                <span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span>
+                            </div>
+                            <div class="y-axis-labels">
+                                <span>6000</span><span>4500</span><span>3000</span><span>1500</span><span>0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Conversões por Fonte</h3>
+                        <div class="chart-placeholder bar-chart">
+                            <div class="bar google" style="height: 80%;"><span>Google</span></div>
+                            <div class="bar facebook" style="height: 65%;"><span>Facebook</span></div>
+                            <div class="bar instagram" style="height: 50%;"><span>Instagram</span></div>
+                            <div class="bar linkedin" style="height: 40%;"><span>LinkedIn</span></div>
+                            <div class="bar youtube" style="height: 30%;"><span>YouTube</span></div>
+                        </div>
+                        <div class="y-axis-labels-right">
+                            <span>100</span><span>75</span><span>50</span><span>25</span><span>0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-download-grid">
+                    <div class="report-box">
+                        <h4>Relatório de Vendas</h4>
+                        <p>Análise detalhada de todas as vendas realizadas.</p>
+                        <button class="btn-secondary-small"><i class="fas fa-download"></i> Baixar Relatório</button>
+                    </div>
+                    <div class="report-box">
+                        <h4>Relatório de Comissões</h4>
+                        <p>Resumo completo de comissões recebidas.</p>
+                        <button class="btn-secondary-small"><i class="fas fa-download"></i> Baixar Relatório</button>
+                    </div>
+                    <div class="report-box">
+                        <h4>Análise de Performance</h4>
+                        <p>Métricas de performance dos seus links.</p>
+                        <button class="btn-secondary-small"><i class="fas fa-download"></i> Baixar Relatório</button>
+                    </div>
+                    <div class="report-box">
+                        <h4>Relatório Financeiro</h4>
+                        <p>Recursos financeiros e projeções.</p>
+                        <button class="btn-secondary-small"><i class="fas fa-download"></i> Baixar Relatório</button>
+                    </div>
+                    <div class="report-box">
+                        <h4>Avaliar Tráfego</h4>
+                        <p>Origem e qualidade do tráfego gerado.</p>
+                        <button class="btn-secondary-small"><i class="fas fa-download"></i> Baixar Relatório</button>
+                    </div>
+                    <div class="report-box">
+                        <h4>Comparativo Mensal</h4>
+                        <p>Comparação de performance entre meses.</p>
+                        <button class="btn-secondary-small"><i class="fas fa-download"></i> Baixar Relatório</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="referencias" class="dashboard-section">
+                <h2>Programa de Referências</h2>
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Total de Referências</span>
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="kpi-value">28</div>
+                        <div class="kpi-trend positive">+5 este mês</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Referências Ativas</span>
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="kpi-value">23</div>
+                        <div class="kpi-trend positive">+7% de ativação</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Comissão de Referências</span>
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="kpi-value">R$ 1.240,00</div>
+                        <div class="kpi-trend positive">+18.5% vs mês anterior</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Taxa de Conversão</span>
+                            <i class="fas fa-percent"></i>
+                        </div>
+                        <div class="kpi-value">15.2%</div>
+                        <div class="kpi-trend positive">+2.1% vs mês anterior</div>
+                    </div>
+                </div>
+
+                <div class="how-it-works">
+                    <h3>Como Funciona o Programa de Referências</h3>
+                    <div class="steps-grid">
+                        <div class="step-card">
+                            <i class="fas fa-user-friends"></i>
+                            <h4>1. Convide Amigos</h4>
+                            <p>Compartilhe seu link único e convide pessoas para se tornarem afiliados</p>
+                        </div>
+                        <div class="step-card">
+                            <i class="fas fa-user-plus"></i>
+                            <h4>2. Eles se Cadastram</h4>
+                            <p>Seus referidos se cadastram usando seu link e começam a vender</p>
+                        </div>
+                        <div class="step-card">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <h4>3. Você Ganha</h4>
+                            <p>Receba 5% de comissão sobre todas as vendas dos seus referidos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="your-referral-link">
+                    <h3>Seu Link de Referência</h3>
+                    <div class="link-box">
+                        <span>https://afiliadopro.com/ref/joao-silva-123</span>
+                        <button class="btn-copy-link"><i class="fas fa-copy"></i> Copiar Link</button>
+                        <button class="btn-share-link"><i class="fas fa-share-alt"></i> Compartilhar</button>
+                    </div>
+                </div>
+
+                <div class="your-references">
+                    <h3>Suas Referências</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Data de Cadastro</th>
+                                <th>Vendas</th>
+                                <th>Comissão Gerada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Maria Silva</td>
+                                <td>maria@email.com</td>
+                                <td><span class="status active">Ativo</span></td>
+                                <td>2024-05-15</td>
+                                <td>12</td>
+                                <td class="comission-value">R$ 1.240,00</td>
+                            </tr>
+                            <tr>
+                                <td>João Santos</td>
+                                <td>joao@email.com</td>
+                                <td><span class="status active">Ativo</span></td>
+                                <td>2024-04-20</td>
+                                <td>8</td>
+                                <td class="comission-value">R$ 890,00</td>
+                            </tr>
+                            <tr>
+                                <td>Ana Costa</td>
+                                <td>ana@email.com</td>
+                                <td><span class="status pending">Pendente</span></td>
+                                <td>2024-05-01</td>
+                                <td>0</td>
+                                <td class="comission-value">R$ 0,00</td>
+                            </tr>
+                            <tr>
+                                <td>Pedro Lima</td>
+                                <td>pedro@email.com</td>
+                                <td><span class="status active">Ativo</span></td>
+                                <td>2024-04-10</td>
+                                <td>15</td>
+                                <td class="comission-value">R$ 1.650,00</td>
+                            </tr>
+                            <tr>
+                                <td>Carla Mendes</td>
+                                <td>carla@email.com</td>
+                                <td><span class="status inactive">Inativo</span></td>
+                                <td>2024-03-05</td>
+                                <td>5</td>
+                                <td class="comission-value">R$ 430,00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="configuracoes" class="dashboard-section">
+                <h2>Configurações</h2>
+                <div class="config-tabs">
+                    <button class="config-tab active">Perfil</button>
+                    <button class="config-tab">Notificações</button>
+                    <button class="config-tab">Pagamento</button>
+                    <button class="config-tab">Segurança</button>
+                    <button class="config-tab">API</button>
+                    <button class="config-tab">Aparência</button>
+                </div>
+
+                <div class="config-content active">
+                    <h3>Informações do Perfil</h3>
+                    <div class="profile-form">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" value="João">
+                        </div>
+                        <div class="form-group">
+                            <label for="surname">Sobrenome</label>
+                            <input type="text" id="surname" value="Silva">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" value="joao@exemplo.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="text" id="phone" value="+55 11 99999-9999">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio">Especialista em marketing digital</textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn-primary">Salvar Alterações</button>
+                        </div>
+                    </div>
+                </div>
+
+                </section>
+
+           
+        </main>
+    </div>
+
+    <script>
+        // Simple JavaScript to handle sidebar active state and section display
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarLinks = document.querySelectorAll('.sidebar-nav ul li a');
+            const sections = document.querySelectorAll('.dashboard-section');
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent default anchor jump
+
+                    // Remove active from all sidebar links
+                    sidebarLinks.forEach(item => item.parentElement.classList.remove('active'));
+                    // Add active to the clicked link's parent li
+                    this.parentElement.classList.add('active');
+
+                    // Hide all sections
+                    sections.forEach(section => section.classList.remove('active-section'));
+
+                    // Show the target section
+                    const targetId = this.getAttribute('href').substring(1); // Get href without '#'
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.classList.add('active-section');
+                    }
+                });
+            });
+
+            // Initial active section (Dashboard)
+            document.querySelector('.sidebar-nav ul li.active a').click();
+
+            // Simple handling for config tabs (can be extended)
+            const configTabs = document.querySelectorAll('.config-tabs .config-tab');
+            const configContents = document.querySelectorAll('.config-content');
+
+            configTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    configTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // In a real app, you'd show/hide corresponding content here
+                    // For this static example, only the 'Perfil' content is present.
+                    // You would toggle 'active' class on .config-content elements.
+                });
+            });
+        });
+    </script>
+</body>
+</html>
