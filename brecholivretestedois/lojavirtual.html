@@ -1,0 +1,2180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Virtual</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+       /* General Resets and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa; /* Light gray background */
+    display: flex;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a1a1a;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+}
+
+/* Dashboard Wrapper */
+.dashboard-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #ffffff; /* White background */
+    color: #333;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.sidebar-header .logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #000; /* Black for EcoStore logo */
+}
+
+.sidebar-nav ul li {
+    margin-bottom: 5px;
+}
+
+.sidebar-nav ul li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: #555;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-nav ul li a .fas {
+    margin-right: 15px;
+    font-size: 1.1em;
+}
+
+.sidebar-nav ul li.active a,
+.sidebar-nav ul li a:hover {
+    background-color: #e6e9ff; /* Light blue for active/hover */
+    color: #5d5bfa; /* Darker blue text */
+}
+
+.sidebar-footer {
+    margin-top: auto; /* Pushes it to the bottom */
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #5d5bfa;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.user-email {
+    font-size: 0.85em;
+    color: #777;
+}
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #f8f9fa;
+    position: relative;
+}
+
+/* Topbar */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.topbar-left h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+}
+
+.topbar-left p {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.topbar-actions i {
+    font-size: 1.2em;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.topbar-actions i:hover {
+    color: #000;
+}
+
+.btn-new-item {
+    background-color: #5d5bfa; /* EcoStore primary blue */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex; /* For icon alignment */
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-new-item:hover {
+    background-color: #4a48cc;
+}
+
+
+/* Dashboard Sections */
+.dashboard-section {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    display: none;
+}
+
+.dashboard-section.active-section {
+    display: block;
+}
+
+/* KPI Cards */
+.kpi-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.kpi-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    border: 1px solid #eee;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.kpi-icon-wrapper {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+    color: #fff;
+}
+
+.kpi-icon-wrapper.blue { background-color: #5d5bfa; }
+.kpi-icon-wrapper.green { background-color: #28a745; }
+.kpi-icon-wrapper.purple { background-color: #6f42c1; }
+.kpi-icon-wrapper.red { background-color: #dc3545; }
+.kpi-icon-wrapper.yellow { background-color: #ffc107; }
+.kpi-icon-wrapper.light-purple { background-color: #a879d7; }
+
+
+.kpi-info {
+    flex-grow: 1;
+}
+
+.kpi-label {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.kpi-value {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+}
+
+.kpi-trend {
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+.kpi-trend.positive {
+    color: #28a745; /* Green */
+}
+
+.kpi-trend.negative {
+    color: #dc3545; /* Red */
+}
+
+/* Chart Grid */
+.chart-grid {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.chart-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.chart-card.large {
+    flex: 2; /* Takes more space */
+    min-width: 500px;
+}
+
+.chart-card.small {
+    flex: 1; /* Takes less space */
+    min-width: 300px;
+}
+
+.chart-card h3 {
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+
+.chart-placeholder {
+    height: 250px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+
+/* Line Chart */
+.line-chart svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 60px); /* Adjust for Y-axis labels */
+    height: calc(100% - 40px); /* Adjust for X-axis labels */
+    transform: translate(40px, 0); /* Shift right to align with labels */
+}
+
+.line-chart .x-axis-labels {
+    position: absolute;
+    bottom: -25px;
+    left: 40px; /* Align with chart start */
+    width: calc(100% - 60px);
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.85em;
+    color: #777;
+}
+
+.line-chart .y-axis-labels {
+    position: absolute;
+    left: -10px;
+    top: 0;
+    height: calc(100% - 40px);
+    display: flex;
+    flex-direction: column-reverse; /* Reverse to put 0 at bottom */
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 0.85em;
+    color: #777;
+    padding-right: 10px;
+    border-right: 1px solid #eee;
+}
+
+/* Product Sales List */
+.product-sales .product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+.product-sales .product-item:last-child {
+    border-bottom: none;
+}
+
+.product-sales .product-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.product-sales .product-details {
+    font-size: 0.85em;
+    color: #777;
+    margin-left: auto; /* Pushes to the left */
+    margin-right: 15px; /* Space from value */
+}
+
+.product-sales .product-value {
+    font-weight: 600;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Bar Chart (Horizontal for Categories) */
+.bar-chart.horizontal-bars {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding-left: 50px; /* Space for labels on left */
+    padding-bottom: 20px;
+    height: 100%;
+}
+
+.bar-chart .bar-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.bar-chart .bar-label {
+    font-size: 0.9em;
+    color: #555;
+    min-width: 100px;
+    text-align: right;
+    margin-right: 15px;
+}
+
+.bar-chart .bar {
+    height: 25px; /* Height of the bar */
+    background-color: #5d5bfa;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+.bar-chart .y-axis-labels-right { /* acting as X-axis labels for horizontal bars */
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    width: calc(100% - 50px);
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 0;
+    padding-right: 0;
+    border-top: 1px solid #eee;
+    border-left: none;
+    font-size: 0.85em;
+    color: #777;
+    transform: translateY(20px);
+}
+
+---
+
+/* Dashboard Tables */
+.dashboard-tables {
+    display: flex;
+    gap: 20px;
+    /* Alterado: Agora os itens ficarão um abaixo do outro */
+    flex-direction: column;
+    /* Removido: flex-wrap: wrap; */
+}
+
+.table-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    /* Alterado: Garante que ocupe 100% da largura do contêiner pai */
+    width: 100%;
+    /* Removido: flex: 1; e min-width: 450px; */
+}
+---
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+table th {
+    background-color: #f9fafa;
+    color: #555;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.85em;
+    font-weight: 500;
+    display: inline-block;
+    min-width: 70px;
+    text-align: center;
+}
+
+.status.active { background-color: #e6f6ee; color: #28a745; }
+.status.sold-out { background-color: #fde6e8; color: #dc3545; }
+.status.pending { background-color: #fff3cd; color: #ffc107; }
+.status.processing { background-color: #e0f7fa; color: #00bcd4; } /* Light cyan */
+.status.sent { background-color: #e3f2fd; color: #2196f3; } /* Light blue */
+.status.delivered { background-color: #e6f6ee; color: #28a745; }
+.status.inactive { background-color: #fde6e8; color: #dc3545; }
+
+.icon-action {
+    color: #999;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.icon-action:hover {
+    color: #555;
+}
+
+/* Product & Order specific actions */
+.table-card tbody tr td:last-child i {
+    margin-left: 0;
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+
+/* Search and Filter Bar */
+.search-filter-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.search-input-group {
+    display: flex;
+    align-items: center;
+    background-color: #f4f6f9;
+    border-radius: 8px;
+    padding: 8px 15px;
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.search-input-group i {
+    color: #999;
+    margin-right: 10px;
+}
+
+.search-input-group input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 0.95em;
+    color: #333;
+    width: 100%;
+}
+
+.btn-filter {
+    background-color: #f4f6f9;
+    border: 1px solid #ddd;
+    color: #555;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-filter:hover {
+    background-color: #e0e4eb;
+    border-color: #ccc;
+}
+
+/* Clients section specific */
+.client-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.user-avatar-small {
+    width: 30px;
+    height: 30px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+    color: #555;
+    flex-shrink: 0;
+}
+.client-email {
+    font-size: 0.8em;
+    color: #999;
+    margin-left: 40px; /* Align with name if avatar is not used */
+}
+
+/* Analytics Section specific */
+.bottom-analytics-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.bottom-analytics-grid .table-card {
+    flex: 1;
+    min-width: 350px;
+}
+
+.pie-chart {
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: conic-gradient(
+        #605cff 0% var(--p),
+        #2ecc71 var(--p) calc(var(--p) + var(--p2, 0%)),
+        #f1c40f calc(var(--p) + var(--p2, 0%) + var(--p3, 0%)),
+        #e74c3c calc(var(--p) + var(--p2, 0%) + var(--p3, 0%)) 100%
+    );
+    border-radius: 50%;
+    width: 180px; /* Size of the pie chart */
+    height: 180px;
+    margin: 20px auto;
+}
+
+.pie-slice {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 0 3px rgba(0,0,0,0.4);
+    pointer-events: none; /* Allows clicks to pass through to the parent for tooltip logic (if implemented) */
+    display: none; /* Hide labels inside the pie, display legend instead for clarity */
+}
+/* For a simple visual, you can uncomment to see them */
+/* .pie-slice {
+    display: block;
+} */
+
+
+.metrics-performance .metric-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+.metrics-performance .metric-item:last-child {
+    border-bottom: none;
+}
+
+.metrics-performance .metric-item span:first-child {
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.metrics-performance .metric-item p {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.metrics-performance .metric-value {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Site Builder Section */
+.site-builder-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.site-builder-header h2 {
+    margin-bottom: 0;
+}
+
+.site-builder-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 0.95em;
+    color: #777;
+}
+
+.site-builder-actions i {
+    margin-right: 5px;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s ease;
+}
+.site-builder-actions i:hover {
+    color: #333;
+}
+
+.btn-builder-action {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-builder-action.primary {
+    background-color: #5d5bfa;
+    color: #fff;
+}
+.btn-builder-action.primary:hover {
+    background-color: #4a48cc;
+}
+
+.btn-builder-action.success {
+    background-color: #28a745;
+    color: #fff;
+}
+.btn-builder-action.success:hover {
+    background-color: #218838;
+}
+
+.site-builder-content {
+    display: flex;
+    gap: 20px;
+    height: calc(100vh - 250px); /* Adjust height based on topbar/header */
+    min-height: 500px;
+}
+
+.builder-sidebar {
+    width: 280px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.builder-sidebar h3 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+
+.builder-menu-group {
+    margin-bottom: 25px;
+}
+
+.builder-menu-group h4 {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.builder-menu-group h4 i {
+    margin-right: 10px;
+    color: #5d5bfa;
+}
+
+.builder-menu-group ul li {
+    padding: 8px 0;
+    color: #333;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: color 0.2s ease;
+}
+
+.builder-menu-group ul li:hover {
+    color: #5d5bfa;
+}
+
+.builder-menu-group ul li i:first-child {
+    margin-right: 10px;
+    color: #777;
+}
+.builder-menu-group ul li span {
+    color: #999;
+    font-size: 0.8em;
+    margin-left: auto;
+}
+.builder-menu-group ul li i:last-child {
+    margin-left: auto;
+    color: #777;
+}
+
+.builder-tip {
+    background-color: #e6e9ff;
+    border-left: 4px solid #5d5bfa;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.85em;
+    color: #555;
+    margin-top: 30px;
+}
+
+.builder-tip i {
+    color: #5d5bfa;
+    font-size: 1.2em;
+}
+
+.builder-canvas {
+    flex-grow: 1;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    border: 1px dashed #ccc;
+}
+
+.canvas-placeholder i {
+    font-size: 3em;
+    color: #bbb;
+    margin-bottom: 15px;
+}
+
+.canvas-placeholder p {
+    color: #777;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.canvas-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.canvas-actions button {
+    background-color: #e0e4eb;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    color: #555;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.canvas-actions button:hover {
+    background-color: #d0d4db;
+    border-color: #bbb;
+}
+
+.builder-properties {
+    width: 250px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.properties-placeholder i {
+    font-size: 3em;
+    color: #bbb;
+    margin-bottom: 15px;
+}
+
+.properties-placeholder p {
+    color: #777;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+/* Configurações Section */
+.config-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.config-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    border: 1px solid #eee;
+}
+
+.config-card.large {
+    grid-column: span 2; /* Span two columns */
+}
+
+.config-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #333;
+    outline: none;
+    background-color: #f9fafa;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #5d5bfa;
+    box-shadow: 0 0 0 3px rgba(93, 91, 250, 0.1);
+}
+
+.form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.form-group .edit-icon {
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.form-group .edit-icon:hover {
+    color: #555;
+}
+
+.payment-option,
+.notification-option,
+.security-option,
+.delivery-option,
+.location-info,
+.team-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f2f5;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.payment-option:last-child,
+.notification-option:last-child,
+.security-option:last-child,
+.delivery-option:last-child,
+.location-info:last-child,
+.team-info:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.payment-option span,
+.notification-option span,
+.security-option span,
+.delivery-option span,
+.location-info span,
+.team-info span {
+    font-weight: 600;
+    color: #333;
+    flex-basis: 60%; /* Adjust width */
+}
+
+.payment-option p,
+.notification-option p,
+.security-option p,
+.delivery-option p,
+.location-info p,
+.team-info p {
+    font-size: 0.85em;
+    color: #777;
+    margin-left: 0; /* Override default margin */
+    flex-basis: 100%; /* Take full width on next line */
+    order: 2; /* Put below label */
+}
+
+/* Toggle Switch */
+.switch {
+ position: relative;
+ display: inline-block;
+ width: 45px;
+ height: 25px;
+ order: 1; /* Keep beside label */
+}
+
+.switch input {
+ opacity: 0;
+ width: 0;
+ height: 0;
+}
+
+.slider {
+ position: absolute;
+ cursor: pointer;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-color: #ccc;
+ -webkit-transition: .4s;
+ transition: .4s;
+}
+
+.slider:before {
+ position: absolute;
+ content: "";
+ height: 18px;
+ width: 18px;
+ left: 4px;
+ bottom: 4px;
+ background-color: white;
+ -webkit-transition: .4s;
+ transition: .4s;
+}
+
+input:checked + .slider {
+ background-color: #5d5bfa;
+}
+
+input:focus + .slider {
+ box-shadow: 0 0 1px #5d5bfa;
+}
+
+input:checked + .slider:before {
+ -webkit-transform: translateX(20px);
+ -ms-transform: translateX(20px);
+ transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+ border-radius: 25px;
+}
+
+.slider.round:before {
+ border-radius: 50%;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: #5d5bfa;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.btn-link:hover {
+    color: #4a48cc;
+    text-decoration: underline;
+}
+
+.form-actions.bottom-save {
+    text-align: right;
+    grid-column: 1 / -1;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background-color: #5d5bfa;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #4a48cc;
+}
+
+
+/* Edit with Loveable */
+.edit-with-loveable {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 0.8em;
+    color: #999;
+}
+
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .dashboard-wrapper {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        overflow-y: visible;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding-bottom: 10px;
+    }
+    .sidebar-header {
+        margin-bottom: 20px;
+    }
+    .sidebar-nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .sidebar-nav ul li {
+        margin-bottom: 0;
+    }
+    .sidebar-nav ul li a {
+        padding: 10px 15px;
+        font-size: 0.95em;
+    }
+    .sidebar-nav ul li a .fas {
+        margin-right: 10px;
+    }
+    .sidebar-footer {
+        display: none; /* Hide footer on smaller screens if too cramped */
+    }
+    .main-content {
+        padding: 20px;
+    }
+    .topbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+        align-items: flex-start;
+    }
+    .topbar-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    .kpi-cards {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .chart-grid {
+        flex-direction: column;
+    }
+    .chart-card.large, .chart-card.small {
+        min-width: unset;
+        width: 100%;
+    }
+    .dashboard-tables, .bottom-analytics-grid {
+        flex-direction: column;
+    }
+    .table-card {
+        min-width: unset;
+        width: 100%;
+    }
+    .site-builder-content {
+        flex-direction: column;
+        height: auto;
+        min-height: unset;
+    }
+    .builder-sidebar, .builder-properties {
+        width: 100%;
+        max-width: 100%;
+    }
+    .config-grid {
+        grid-template-columns: 1fr;
+    }
+    .config-card.large {
+        grid-column: span 1;
+    }
+    .edit-with-loveable {
+        position: static;
+        text-align: center;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+    }
+    .kpi-cards {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    table {
+        font-size: 0.9em;
+    }
+    table th, table td {
+        padding: 10px;
+    }
+    .btn-new-item {
+        padding: 8px 15px;
+        font-size: 0.8em;
+    }
+    .btn-filter {
+        padding: 8px 12px;
+        font-size: 0.8em;
+    }
+    .site-builder-actions {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+    .canvas-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    .canvas-actions button {
+        width: 100%;
+    }
+    .payment-option, .notification-option, .security-option,
+    .delivery-option, .location-info, .team-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .payment-option span, .notification-option span, .security-option span,
+    .delivery-option span, .location-info span, .team-info span {
+        flex-basis: 100%;
+    }
+    .switch, .btn-link {
+        margin-left: auto; /* Push to right */
+    }
+    .payment-option p, .notification-option p, .security-option p {
+        margin-bottom: 5px; /* Add space below paragraph */
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 15px;
+    }
+    .kpi-card {
+        padding: 15px;
+    }
+    .kpi-value {
+        font-size: 1.5em;
+    }
+    .chart-card h3 {
+        font-size: 1.2em;
+    }
+    .line-chart .x-axis-labels, .line-chart .y-axis-labels {
+        font-size: 0.75em;
+    }
+    .bar-chart .bar-label, .y-axis-labels-right {
+        font-size: 0.7em;
+    }
+    .topbar-actions {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .btn-new-item, .topbar-actions i {
+        margin-bottom: 5px;
+    }
+}
+    </style>
+</head>
+<body>
+
+ <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">EcoStore</div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#dashboard"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="#produtos"><i class="fas fa-box-open"></i> Produtos</a></li>
+                    <li><a href="#pedidos"><i class="fas fa-clipboard-list"></i> Pedidos</a></li>
+                    <li><a href="#clientes"><i class="fas fa-users"></i> Clientes</a></li>
+                    <li><a href="#analises"><i class="fas fa-chart-pie"></i> Análises</a></li>
+                    <li><a href="#site-builder"><i class="fas fa-screwdriver-wrench"></i> Construtor de Sites</a></li>
+                    <li><a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">A</div>
+                    <div class="user-details">
+                        <span class="user-name">Admin</span>
+                        <span class="user-email">admin@ecostore.com</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1 id="page-title">Dashboard</h1>
+                    <p id="page-subtitle">Bem-vindo ao painel da sua loja online</p>
+                </div>
+                <div class="topbar-actions">
+                    <button class="btn-new-item"><i class="fas fa-plus"></i> Novo Produto</button>
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-bell"></i>
+                </div>
+            </header>
+
+            <section id="dashboard" class="dashboard-section active-section">
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper blue"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Vendas Totais</span>
+                            <div class="kpi-value">R$ 124.500</div>
+                            <div class="kpi-trend positive">+12% vs mês anterior</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper green"><i class="fas fa-box"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Pedidos</span>
+                            <div class="kpi-value">1,234</div>
+                            <div class="kpi-trend positive">+8% vs mês anterior</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper purple"><i class="fas fa-users"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Clientes</span>
+                            <div class="kpi-value">856</div>
+                            <div class="kpi-trend positive">+15% vs mês anterior</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper red"><i class="fas fa-tag"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Produtos</span>
+                            <div class="kpi-value">47</div>
+                            <div class="kpi-trend negative">-2% vs mês anterior</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-grid">
+                    <div class="chart-card large">
+                        <h3>Vendas dos Últimos 7 Meses</h3>
+                        <div class="chart-placeholder line-chart">
+                            <svg viewBox="0 0 600 300" preserveAspectRatio="none">
+                                <polyline fill="none" stroke="#5d5bfa" stroke-width="3" points="50,220 150,150 250,190 350,120 450,170 550,100"/>
+                            </svg>
+                            <div class="x-axis-labels">
+                                <span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span><span>Jul</span>
+                            </div>
+                            <div class="y-axis-labels">
+                                <span>8000</span><span>6000</span><span>4000</span><span>2000</span><span>0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-card small product-sales">
+                        <h3>Produtos Mais Vendidos</h3>
+                        <div class="product-list">
+                            <div class="product-item">
+                                <span class="product-name">iPhone 14 Pro</span>
+                                <span class="product-details">142 vendas</span>
+                                <span class="product-value">R$ 1.278.838 <span class="trend positive">▲ +8%</span></span>
+                            </div>
+                            <div class="product-item">
+                                <span class="product-name">MacBook Air M2</span>
+                                <span class="product-details">96 vendas</span>
+                                <span class="product-value">R$ 1.234.802 <span class="trend negative">▼ -2%</span></span>
+                            </div>
+                            <div class="product-item">
+                                <span class="product-name">AirPods Pro</span>
+                                <span class="product-details">158 vendas</span>
+                                <span class="product-value">R$ 436.544 <span class="trend positive">▲ +15%</span></span>
+                            </div>
+                            <div class="product-item">
+                                <span class="product-name">iPad Air</span>
+                                <span class="product-details">67 vendas</span>
+                                <span class="product-value">R$ 414.913 <span class="trend positive">▲ +9%</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-tables">
+                    <div class="table-card">
+                        <h3>Produtos Recentes</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PRODUTO</th>
+                                    <th>PREÇO</th>
+                                    <th>ESTOQUE</th>
+                                    <th>STATUS</th>
+                                    <th>AÇÕES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>iPhone 14 Pro</td>
+                                    <td>R$ 5.999,00</td>
+                                    <td>25</td>
+                                    <td><span class="status active">Ativo</span></td>
+                                    <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>MacBook Air M2</td>
+                                    <td>R$ 12.499,00</td>
+                                    <td>12</td>
+                                    <td><span class="status active">Ativo</span></td>
+                                    <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>AirPods Pro</td>
+                                    <td>R$ 2.799,00</td>
+                                    <td>0</td>
+                                    <td><span class="status sold-out">Esgotado</span></td>
+                                    <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>iPad Air</td>
+                                    <td>R$ 4.999,00</td>
+                                    <td>8</td>
+                                    <td><span class="status active">Ativo</span></td>
+                                    <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Apple Watch Series 9</td>
+                                    <td>R$ 4.299,00</td>
+                                    <td>15</td>
+                                    <td><span class="status active">Ativo</span></td>
+                                    <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-card">
+                        <h3>Pedidos Recentes</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PEDIDO</th>
+                                    <th>CLIENTE</th>
+                                    <th>TOTAL</th>
+                                    <th>STATUS</th>
+                                    <th>DATA</th>
+                                    <th>AÇÕES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#02345</td>
+                                    <td>João Silva</td>
+                                    <td>R$ 2.799,00</td>
+                                    <td><span class="status pending">Pendente</span></td>
+                                    <td>14/01/2024</td>
+                                    <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>#02346</td>
+                                    <td>Maria Santos</td>
+                                    <td>R$ 5.999,00</td>
+                                    <td><span class="status processing">Processando</span></td>
+                                    <td>14/01/2024</td>
+                                    <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>#02347</td>
+                                    <td>Pedro Costa</td>
+                                    <td>R$ 12.499,00</td>
+                                    <td><span class="status sent">Enviado</span></td>
+                                    <td>13/01/2024</td>
+                                    <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>#02348</td>
+                                    <td>Ana Oliveira</td>
+                                    <td>R$ 4.999,00</td>
+                                    <td><span class="status delivered">Entregue</span></td>
+                                    <td>13/01/2024</td>
+                                    <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>#02349</td>
+                                    <td>Carlos Lima</td>
+                                    <td>R$ 4.299,00</td>
+                                    <td><span class="status pending">Pendente</span></td>
+                                    <td>12/01/2024</td>
+                                    <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="produtos" class="dashboard-section">
+                <div class="search-filter-bar">
+                    <div class="search-input-group">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar produtos...">
+                    </div>
+                    <button class="btn-filter"><i class="fas fa-filter"></i> Filtros</button>
+                </div>
+
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper blue"><i class="fas fa-boxes"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Total de Produtos</span>
+                            <div class="kpi-value">47</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper green"><i class="fas fa-check-circle"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Em Estoque</span>
+                            <div class="kpi-value">42</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper red"><i class="fas fa-times-circle"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Sem Estoque</span>
+                            <div class="kpi-value">5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <h3>Produtos Recentes</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PRODUTO</th>
+                                <th>PREÇO</th>
+                                <th>ESTOQUE</th>
+                                <th>STATUS</th>
+                                <th>AÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>iPhone 14 Pro</td>
+                                <td>R$ 5.999,00</td>
+                                <td>25</td>
+                                <td><span class="status active">Ativo</span></td>
+                                <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>MacBook Air M2</td>
+                                <td>R$ 12.499,00</td>
+                                <td>12</td>
+                                <td><span class="status active">Ativo</span></td>
+                                <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>AirPods Pro</td>
+                                <td>R$ 2.799,00</td>
+                                <td>0</td>
+                                <td><span class="status sold-out">Esgotado</span></td>
+                                <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>iPad Air</td>
+                                <td>R$ 4.999,00</td>
+                                <td>8</td>
+                                <td><span class="status active">Ativo</span></td>
+                                <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Apple Watch Series 9</td>
+                                <td>R$ 4.299,00</td>
+                                <td>15</td>
+                                <td><span class="status active">Ativo</span></td>
+                                <td><i class="fas fa-edit icon-action"></i><i class="fas fa-trash-alt icon-action"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="pedidos" class="dashboard-section">
+                <div class="search-filter-bar">
+                    <div class="search-input-group">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar pedidos...">
+                    </div>
+                    <button class="btn-filter"><i class="fas fa-filter"></i> Filtros</button>
+                </div>
+
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper blue"><i class="fas fa-boxes"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Total de Pedidos</span>
+                            <div class="kpi-value">1,234</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper yellow"><i class="fas fa-hourglass-half"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Pendentes</span>
+                            <div class="kpi-value">23</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper green"><i class="fas fa-check-circle"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Concluídos</span>
+                            <div class="kpi-value">1,189</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper red"><i class="fas fa-times-circle"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Cancelados</span>
+                            <div class="kpi-value">22</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <h3>Pedidos Recentes</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PEDIDO</th>
+                                <th>CLIENTE</th>
+                                <th>TOTAL</th>
+                                <th>STATUS</th>
+                                <th>DATA</th>
+                                <th>AÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#02345</td>
+                                <td>João Silva</td>
+                                <td>R$ 2.799,00</td>
+                                <td><span class="status pending">Pendente</span></td>
+                                <td>14/01/2024</td>
+                                <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>#02346</td>
+                                <td>Maria Santos</td>
+                                <td>R$ 5.999,00</td>
+                                <td><span class="status processing">Processando</span></td>
+                                <td>14/01/2024</td>
+                                <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>#02347</td>
+                                <td>Pedro Costa</td>
+                                <td>R$ 12.499,00</td>
+                                <td><span class="status sent">Enviado</span></td>
+                                <td>13/01/2024</td>
+                                <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>#02348</td>
+                                <td>Ana Oliveira</td>
+                                <td>R$ 4.999,00</td>
+                                <td><span class="status delivered">Entregue</span></td>
+                                <td>13/01/2024</td>
+                                <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                            </tr>
+                            <tr>
+                                <td>#02349</td>
+                                <td>Carlos Lima</td>
+                                <td>R$ 4.299,00</td>
+                                <td><span class="status pending">Pendente</span></td>
+                                <td>12/01/2024</td>
+                                <td><i class="fas fa-eye icon-action"></i><i class="fas fa-ellipsis-h icon-action"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="clientes" class="dashboard-section">
+                <div class="search-filter-bar">
+                    <div class="search-input-group">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar clientes...">
+                    </div>
+                    <button class="btn-filter"><i class="fas fa-filter"></i> Filtros</button>
+                </div>
+
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper blue"><i class="fas fa-users"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Total de Clientes</span>
+                            <div class="kpi-value">856</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper green"><i class="fas fa-user-check"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Clientes Ativos</span>
+                            <div class="kpi-value">742</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper purple"><i class="fas fa-user-plus"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Novos Clientes Este Mês</span>
+                            <div class="kpi-value">48</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <h3>Lista de Clientes</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>CLIENTE</th>
+                                <th>PEDIDOS</th>
+                                <th>TOTAL GASTO</th>
+                                <th>ÚLTIMO PEDIDO</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="client-cell"><div class="user-avatar-small">JS</div>João Silva <br> <span class="client-email">js.joao.s@email.com</span></div></td>
+                                <td>12</td>
+                                <td>R$ 2.450,00</td>
+                                <td>2 dias atrás</td>
+                                <td><span class="status active">ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td><div class="client-cell"><div class="user-avatar-small">MS</div>Maria Santos <br> <span class="client-email">ms.maria.santos@email.com</span></div></td>
+                                <td>8</td>
+                                <td>R$ 1.890,00</td>
+                                <td>1 semana atrás</td>
+                                <td><span class="status active">ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td><div class="client-cell"><div class="user-avatar-small">PC</div>Pedro Costa <br> <span class="client-email">pc.pedro.costa@email.com</span></div></td>
+                                <td>15</td>
+                                <td>R$ 3.250,00</td>
+                                <td>3 dias atrás</td>
+                                <td><span class="status active">ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td><div class="client-cell"><div class="user-avatar-small">AO</div>Ana Oliveira <br> <span class="client-email">ao.ana.oliveira@email.com</span></div></td>
+                                <td>5</td>
+                                <td>R$ 890,00</td>
+                                <td>2 semanas atrás</td>
+                                <td><span class="status inactive">inativo</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="analises" class="dashboard-section">
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper blue"><i class="fas fa-percent"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Taxa de Conversão</span>
+                            <div class="kpi-value">3.2%</div>
+                            <div class="kpi-trend positive">+6% vs mês anterior</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper purple"><i class="fas fa-eye"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Visualizações</span>
+                            <div class="kpi-value">24.5K</div>
+                            <div class="kpi-trend negative">-12% vs mês anterior</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper green"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Ticket Médio</span>
+                            <div class="kpi-value">R$ 285</div>
+                            <div class="kpi-trend positive">+5% vs mês anterior</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon-wrapper light-purple"><i class="fas fa-chart-line"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">ROI</span>
+                            <div class="kpi-value">245%</div>
+                            <div class="kpi-trend positive">+25% vs mês anterior</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-grid">
+                    <div class="chart-card large">
+                        <h3>Vendas dos Últimos 7 Meses</h3>
+                        <div class="chart-placeholder line-chart">
+                            <svg viewBox="0 0 600 300" preserveAspectRatio="none">
+                                <polyline fill="none" stroke="#5d5bfa" stroke-width="3" points="50,220 150,150 250,190 350,120 450,170 550,100"/>
+                            </svg>
+                            <div class="x-axis-labels">
+                                <span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span><span>Jul</span>
+                            </div>
+                            <div class="y-axis-labels">
+                                <span>8000</span><span>6000</span><span>4000</span><span>2000</span><span>0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-card small">
+                        <h3>Vendas por Categoria</h3>
+                        <div class="chart-placeholder bar-chart horizontal-bars">
+                            <div class="bar-item">
+                                <span class="bar-label">Eletrônicos</span>
+                                <div class="bar blue" style="height: 100%;"></div>
+                            </div>
+                            <div class="bar-item">
+                                <span class="bar-label">Roupas</span>
+                                <div class="bar blue" style="height: 75%;"></div>
+                            </div>
+                            <div class="bar-item">
+                                <span class="bar-label">Casa & Jardim</span>
+                                <div class="bar blue" style="height: 50%;"></div>
+                            </div>
+                            <div class="bar-item">
+                                <span class="bar-label">Livros</span>
+                                <div class="bar blue" style="height: 35%;"></div>
+                            </div>
+                            <div class="bar-item">
+                                <span class="bar-label">Esportes</span>
+                                <div class="bar blue" style="height: 25%;"></div>
+                            </div>
+                            <div class="y-axis-labels-right">
+                                <span>4000</span><span>3000</span><span>2000</span><span>1000</span><span>0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-analytics-grid">
+                    <div class="table-card">
+                        <h3>Fonte de Tráfego</h3>
+                        <div class="chart-placeholder pie-chart">
+                            <div class="pie-slice" style="--p:45;--c:#605cff;">Orgânico 45%</div>
+                            <div class="pie-slice" style="--p:21;--c:#2ecc71;">Redes Sociais 21%</div>
+                            <div class="pie-slice" style="--p:19;--c:#f1c40f;">E-mail 19%</div>
+                            <div class="pie-slice" style="--p:15;--c:#e74c3c;">Direto 15%</div>
+                        </div>
+                    </div>
+                    <div class="table-card metrics-performance">
+                        <h3>Métricas de Performance</h3>
+                        <div class="metric-item">
+                            <span>Taxa de Abandono</span>
+                            <p>Carrinho de compras</p>
+                            <span class="metric-value">68.5% <span class="trend negative">-2.1%</span></span>
+                        </div>
+                        <div class="metric-item">
+                            <span>Tempo na Página</span>
+                            <p>Média de sessão</p>
+                            <span class="metric-value">2min 34s <span class="trend positive">+12s</span></span>
+                        </div>
+                        <div class="metric-item">
+                            <span>Taxa de Retorno</span>
+                            <p>Clientes recorrentes</p>
+                            <span class="metric-value">34.2% <span class="trend positive">+5.6%</span></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="site-builder" class="dashboard-section">
+                <div class="site-builder-header">
+                    <h2>Meu Site</h2>
+                    <div class="site-builder-actions">
+                        <i class="fas fa-eye"></i> Visualizar
+                        <i class="fas fa-cog"></i> Configurações
+                        <button class="btn-builder-action primary"><i class="fas fa-save"></i> Salvar</button>
+                        <button class="btn-builder-action success"><i class="fas fa-upload"></i> Publicar</button>
+                    </div>
+                </div>
+
+                <div class="site-builder-content">
+                    <div class="builder-sidebar">
+                        <h3>Ferramentas</h3>
+                        <div class="builder-menu-group">
+                            <h4><i class="fas fa-magic"></i> Geração com IA</h4>
+                            <ul>
+                                <li><i class="fas fa-robot"></i> Gerar Site com IA</li>
+                                <li><i class="fas fa-copy"></i> Templates <i class="fas fa-angle-right"></i></li>
+                            </ul>
+                        </div>
+                        <div class="builder-menu-group">
+                            <h4><i class="fas fa-shapes"></i> Elementos Básicos</h4>
+                            <ul>
+                                <li><i class="fas fa-font"></i> Texto <span>Adicionar texto editável</span></li>
+                                <li><i class="fas fa-image"></i> Imagem <span>Adicionar imagem</span></li>
+                                <li><i class="fas fa-hand-pointer"></i> Botão <span>Adicionar botão clicável</span></li>
+                            </ul>
+                        </div>
+                        <div class="builder-menu-group">
+                            <h4><i class="fas fa-grip"></i> Layout & Estrutura</h4>
+                            <ul>
+                                <li><i class="fas fa-heading"></i> Cabeçalho <span>Cabeçalho do site</span></li>
+                                <li><i class="fas fa-grip-lines"></i> Seção <span>Seção de conteúdo</span></li>
+                                <li><i class="fas fa-square"></i> Container <span>Container flexível</span></li>
+                                <li><i class="fas fa-vector-square"></i> Rodapé <span>Rodapé do site</span></li>
+                            </ul>
+                        </div>
+                        <div class="builder-tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <p>Dica: Use a IA para gerar um site completo ou aplique um template pronto. Você também pode adicionar elementos manualmente.</p>
+                        </div>
+                    </div>
+                    <div class="builder-canvas">
+                        <div class="canvas-placeholder">
+                            <i class="fas fa-plus"></i>
+                            <p>Comece a construir seu site</p>
+                            <p>Use a IA para gerar um site completo ou aplique um template pronto. Você também pode adicionar elementos manualmente. </p>
+                            <div class="canvas-actions">
+                                <button><i class="fas fa-magic"></i> Geração IA</button>
+                                <button><i class="fas fa-copy"></i> Templates prontos</button>
+                                <button><i class="fas fa-edit"></i> Editor visual</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="builder-properties">
+                        <div class="properties-placeholder">
+                            <i class="fas fa-palette"></i>
+                            <p>Selecione um elemento no canvas para editar suas propriedades e estilos.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="configuracoes" class="dashboard-section">
+                <h2>Configurações</h2>
+                <div class="config-grid">
+                    <div class="config-card large">
+                        <h3>Informações da Loja</h3>
+                        <div class="form-group">
+                            <label for="shop-name">Nome da Loja</label>
+                            <input type="text" id="shop-name" value="EcoStore">
+                        </div>
+                        <div class="form-group">
+                            <label for="shop-description">Descrição</label>
+                            <textarea id="shop-description">Loja online especializada em produtos sustentáveis</textarea>
+                            <i class="fas fa-edit edit-icon"></i>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email de Contato</label>
+                            <input type="email" id="contact-email" value="contato@ecostore.com">
+                        </div>
+                    </div>
+
+                    <div class="config-card small">
+                        <h3>Pagamentos</h3>
+                        <div class="payment-option">
+                            <span>Cartão de Crédito</span>
+                            <p>Visa, Mastercard, Elo</p>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="payment-option">
+                            <span>PIX</span>
+                            <p>Pagamento instantâneo</p>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="payment-option">
+                            <span>Boleto Bancário</span>
+                            <p>2-3 dias úteis</p>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="config-card small">
+                        <h3>Notificações</h3>
+                        <div class="notification-option">
+                            <span>Novos Pedidos</span>
+                            <p>Receba notificações de novos pedidos</p>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="notification-option">
+                            <span>Estoque Baixo</span>
+                            <p>Alertas quando estoque estiver baixo</p>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="notification-option">
+                            <span>Relatórios</span>
+                            <p>Relatórios semanais de vendas</p>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="config-card small">
+                        <h3>Segurança</h3>
+                        <div class="security-option">
+                            <span>Alterar Senha</span>
+                            <p>Última alteração há 3 meses</p>
+                            <button class="btn-link">Alterar</button>
+                        </div>
+                        <div class="security-option">
+                            <span>Autenticação em 2 Fatores</span>
+                            <p>Segurança adicional para sua conta</p>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="config-card small">
+                        <h3>Entrega</h3>
+                        <div class="delivery-option">
+                            <span>Frete Grátis</span>
+                            <p>Acima de R$ 300</p>
+                        </div>
+                        <div class="delivery-option">
+                            <span>Entrega Expressa</span>
+                            <p>Até 24h</p>
+                        </div>
+                    </div>
+
+                    <div class="config-card small">
+                        <h3>Localização</h3>
+                        <div class="location-info">
+                            <span>Idioma</span>
+                            <p>Português (BR)</p>
+                        </div>
+                        <div class="location-info">
+                            <span>Moeda</span>
+                            <p>Real (BRL)</p>
+                        </div>
+                    </div>
+
+                    <div class="config-card small">
+                        <h3>Equipe</h3>
+                        <div class="team-info">
+                            <span>Usuários</span>
+                            <p>3 administradores</p>
+                            <button class="btn-link">Gerenciar equipe</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions bottom-save">
+                    <button class="btn-primary">Salvar Configurações</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarLinks = document.querySelectorAll('.sidebar-nav ul li a');
+            const sections = document.querySelectorAll('.dashboard-section');
+            const pageTitle = document.getElementById('page-title');
+            const pageSubtitle = document.getElementById('page-subtitle');
+            const topbarNewItemButton = document.querySelector('.btn-new-item');
+
+            const sectionTitles = {
+                'dashboard': { title: 'Dashboard', subtitle: 'Bem-vindo ao painel da sua loja online', buttonText: 'Novo Produto', buttonIcon: 'fas fa-plus' },
+                'produtos': { title: 'Produtos', subtitle: 'Gerencie seu catálogo de produtos', buttonText: 'Adicionar Produto', buttonIcon: 'fas fa-plus' },
+                'pedidos': { title: 'Pedidos', subtitle: 'Gerencie todos os pedidos de sua loja', buttonText: 'Novo Pedido', buttonIcon: 'fas fa-plus' },
+                'clientes': { title: 'Clientes', subtitle: 'Gerencie sua base de clientes', buttonText: 'Adicionar Cliente', buttonIcon: 'fas fa-user-plus' },
+                'analises': { title: 'Análises', subtitle: 'Insights detalhados sobre sua loja', buttonText: 'Gerar Relatório', buttonIcon: 'fas fa-file-export' },
+                'site-builder': { title: 'Meu Site', subtitle: 'Construtor de Sites', buttonText: 'Publicar Alterações', buttonIcon: 'fas fa-upload' },
+                'configuracoes': { title: 'Configurações', subtitle: 'Gerencie as configurações da sua loja', buttonText: 'Salvar Configurações', buttonIcon: 'fas fa-save' }
+            };
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Remove active from all sidebar links
+                    sidebarLinks.forEach(item => item.parentElement.classList.remove('active'));
+                    // Add active to the clicked link's parent li
+                    this.parentElement.classList.add('active');
+
+                    // Hide all sections
+                    sections.forEach(section => section.classList.remove('active-section'));
+
+                    // Show the target section
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.classList.add('active-section');
+                    }
+
+                    // Update topbar title and subtitle
+                    if (sectionTitles[targetId]) {
+                        pageTitle.textContent = sectionTitles[targetId].title;
+                        pageSubtitle.textContent = sectionTitles[targetId].subtitle;
+                        topbarNewItemButton.innerHTML = `<i class="${sectionTitles[targetId].buttonIcon}"></i> ${sectionTitles[targetId].buttonText}`;
+                        // Hide button if no text is provided for a section (e.g., config)
+                        if (!sectionTitles[targetId].buttonText) {
+                             topbarNewItemButton.style.display = 'none';
+                        } else {
+                             topbarNewItemButton.style.display = 'flex'; // Or 'block' depending on button style
+                        }
+                    }
+                });
+            });
+
+            // Initial active section (Dashboard)
+            document.querySelector('.sidebar-nav ul li.active a').click();
+        });
+    </script>
+</body>
+</html>
